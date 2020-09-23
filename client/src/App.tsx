@@ -5,21 +5,25 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import LandingPage from './pages/LandingPage';
 import ChatPage from './pages/ChatPage';
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
-    <Router>
-      <Switch>
-        <Route path='/chatroom'>
-          <ChatPage />
-        </Route>
-        <Route path='/'>
-          <LandingPage />
-        </Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path='/chatroom'>
+            <ChatPage />
+          </Route>
+          <Route path='/'>
+            <LandingPage />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   );
 };
 

@@ -1,22 +1,22 @@
+// eslint-disable-next-line
 import React from 'react';
 
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  console.log('Handle change')
-  console.log(event.target.value)
-  
-  // Dispatch action to update the name in Redux store.
-  // Use the state in Redux store to set the value of the input element.
-};
-
-const InputField = ({ label, name }: { 
+const InputField = ({ label, name, value, onChange }: { 
   label: string,
-  name: string
-}) => {
+  name: string,
+  value: string,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}): JSX.Element => {
 
   return (
     <label>
       {`${label}:`}
-      <input type='text' name={name} onChange={(e) => handleChange(e)} />
+      <input 
+        type='text'
+        name={name}
+        value={value}
+        onChange={(e) => onChange(e)}
+      />
     </label>
   );
 };
