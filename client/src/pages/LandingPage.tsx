@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateName } from '../redux/slices/nameSlice';
 import InputField from '../components/InputField';
+import { validateName } from '../utils/index';
 
 const LandingPage = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -13,31 +14,10 @@ const LandingPage = (): JSX.Element => {
   const [validationMsg, setValidationMsg] = useState<string>('');
   const [redirect, setRedirect] = useState<boolean>(false);
 
-  const validateName = (): void => {
-    const reqOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name: name })
-    };
-
-    fetch('/api/validation', reqOptions)
-      .then(res => res.json())
-      .then(res => {
-        setIsValid(res.valid);
-        setValidationMsg(res.msg)
-      })
-      .catch(err => {
-        setIsValid(false);
-        setValidationMsg('Server is unavailable. Please try again later.')
-      });
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    validateName();
+    validateName(name, setIsValid, setValidationMsg);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -74,3 +54,6 @@ const LandingPage = (): JSX.Element => {
 };
 
 export default LandingPage;
+
+// TODO:
+// Handle when disconnected from server.
