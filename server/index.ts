@@ -14,11 +14,13 @@ app.use(bodyParser.json());
 app.use('/api/validation', validation);
 
 io.on('connect', (socket) => {
+  const room = 'Chat room';
+
   // When a new user joins the chat room...
   socket.on('joinRoom', ({ username }: { username: string }) => {
-    const room = 'Chat room';
 
     const allUsers = storeUser({ id: socket.id, username });
+    console.log('joinRoom, All users:', socket.id, username);
 
     // Subscribe socket to channel.
     socket.join(room);
@@ -32,6 +34,14 @@ io.on('connect', (socket) => {
     // Emit all user data.
     io.to(room).emit('allUserData', { users: allUsers });
   });
+
+  // When a new message is reveived...
+  socket.on('newMsg', (msg) => {
+    console.log('newMsg, socket:', socket.id)
+    // Broadcast message.
+    socket.broadcast.to(room).emit('newMsg', msg);
+  });
+
 });
 
 const PORT = process.env.PORT || 8080;

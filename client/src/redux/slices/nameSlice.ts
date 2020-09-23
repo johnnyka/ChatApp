@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = '';
+const initialState: string = '';
 
 const nameSlice = createSlice({
   name: 'name',
   initialState,
   reducers: {
-    updateName(state, action: PayloadAction<string>) {
+    updateName(_state, action: PayloadAction<string>) {
       return action.payload;
     }
   }

@@ -2,7 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import nameReducer from './slices/nameSlice';
 
 const rootReducer = combineReducers({
-  name: nameReducer
+  name: nameReducer,
 });
 
 // Export type for later type definition.
