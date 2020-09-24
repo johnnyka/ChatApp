@@ -1,12 +1,12 @@
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateName } from '../redux/slices/nameSlice';
 import { validateName } from '../utils/index';
 
 const LandingPage = (): JSX.Element => {
+  console.log('===== LANDING PAGE')
   const dispatch = useDispatch();
 
   const [name, setName] = useState<string>('');
@@ -16,30 +16,22 @@ const LandingPage = (): JSX.Element => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-
+    console.log('HANDLE SUBMIT')
     validateName(name, setIsValidName, setValidationMsg);
   };
 
-  const emitToServer = () => {
-    const socket = io();
-    console.log('LandingPage, socket:', socket.id)
-    socket.emit('joinRoom', { username: name });
-  };
-
   useEffect(() => {
-    const onValidName = () => {
-      if (isValidName) {
-        dispatch(updateName(name))
-        emitToServer();
-        setRedirect(true);
-      }
+    if (isValidName) {
+      console.log('USE EFFECT, IF')
+      dispatch(updateName(name))
+      setRedirect(true);
     }
-    onValidName();
-  }, [isValidName]); // eslint-disable-line
+  }, [isValidName, dispatch, name]);
 
   return (
     <>
       <div>This is the landing page.</div>
+      
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>
           Name:
@@ -53,7 +45,8 @@ const LandingPage = (): JSX.Element => {
         <input type='submit' value='Submit' />
         <div>{validationMsg}</div>
       </form>
-      {redirect ? <Redirect to='/chatroom' /> : null}
+
+      {redirect ? <Redirect push to='/chatroom' /> : null}
     </>
   );
 };
@@ -62,3 +55,6 @@ export default LandingPage;
 
 // TODO:
 // Handle when disconnected from server.
+
+// Put all states in Redux store. 
+// Make validate name check in async thunk?

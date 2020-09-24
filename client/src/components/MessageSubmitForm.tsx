@@ -1,22 +1,32 @@
 // eslint-disable-next-line
-import React, { useState } from 'react';
-import io from 'socket.io-client';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/rootReducer';
 
-const MessageSubmitForm = (): JSX.Element => {
+const MessageSubmitForm = ({ isTypingMessage }: { isTypingMessage: ((bool: boolean) => void) }): JSX.Element => {
 
   const [myMsg, setMyMsg] = useState<string>('');
+
+  const isTypingUsers = useSelector((state: RootState) => state.isTypingList);
+  console.log('isTyping:', isTypingUsers, !!isTypingUsers.length);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     console.log('Send message');
 
-    // EMIT TO SERVER ETC
-    // THIS IS NOT CORRECT. MIGRATE THE SOCKET TO REDUX MIDDLEWARE! THAT WAY THE SOCKET LIVES IN THE REDUX STORE WHILE AVOIDING SIDE EFFECTS SUCH AS COMPONENT LIFE CYCLES.
-    const socket = io();
-    console.log('MessageSubmitForm, socket:', socket.id)
-    socket.emit('newMsg', myMsg)
-
     setMyMsg('');
+  };
+
+  useEffect(() => {
+    myMsg !== '' ? isTypingMessage(true) : isTypingMessage(false);
+  }, [myMsg]);
+
+  const renderIsTypingUser = (): string => {
+    if (isTypingUsers.length === 1) return `${isTypingUsers[0]} is typing...`;
+
+    const lastCommaOccurenceToEnd: RegExp = /,([^,]*)$/;
+    const typingUsers: string = isTypingUsers.join(', ').replace(lastCommaOccurenceToEnd, ' &' + '$1');
+    return `${typingUsers} are typing...`;
   };
 
   return (
@@ -26,13 +36,13 @@ const MessageSubmitForm = (): JSX.Element => {
           type='text'
           name='myMsg'
           value={myMsg}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            console.log('Typing...')
-            setMyMsg(e.target.value);
-          }}
+          onChange={(e) => setMyMsg(e.target.value)}
         />
         <input type='submit' value='Submit' />
       </form>
+      <div>
+        {!!isTypingUsers.length ? renderIsTypingUser() : null}
+      </div>
     </section>
   );
 };

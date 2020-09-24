@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: string = '';
+const initialState = '';
 
 const nameSlice = createSlice({
   name: 'name',
@@ -12,7 +12,7 @@ const nameSlice = createSlice({
   }
 });
 
-// Export action.
+// Export action type strings.
 export const { updateName } = nameSlice.actions;
 
 // Export reducer.

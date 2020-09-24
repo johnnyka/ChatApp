@@ -3,6 +3,9 @@ export const validateName = (
   setIsValidName: React.Dispatch<React.SetStateAction<boolean>>,
   setValidationMsg: React.Dispatch<React.SetStateAction<string>>
 ): void => {
+
+  console.log('VALIDATE NAME, START')
+
   const reqOptions = {
     method: 'POST',
     headers: {
@@ -21,4 +24,6 @@ export const validateName = (
       setIsValidName(false);
       setValidationMsg('Server is unavailable. Please try again later.')
     });
+
+  console.log('VALIDATE NAME, END')
 };

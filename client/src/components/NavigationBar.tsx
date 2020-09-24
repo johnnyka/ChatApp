@@ -1,12 +1,20 @@
 // eslint-disable-next-line
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 const NavigationBar = (): JSX.Element => {
+  console.log('NAVIGATION BAR')
+
+  const history = useHistory();
+  const leaveChat = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    history.goBack();
+  };
+
   return (
     <section>
-      <button>Leave chat</button>
+      <button type='button' onClick={(e) => leaveChat(e)}>Leave chat</button>
       <p>Chat room</p>
-      <button>Info</button>
+      <Link to='/chatinfo'>Info</Link>
     </section>
   );
 };

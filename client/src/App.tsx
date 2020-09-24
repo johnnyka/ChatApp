@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import LandingPage from './pages/LandingPage';
 import ChatPage from './pages/ChatPage';
+import ChatInfoPage from './pages/ChatInfoPage';
 
 const App = (): JSX.Element => {
   return (
@@ -18,7 +19,10 @@ const App = (): JSX.Element => {
           <Route path='/chatroom'>
             <ChatPage />
           </Route>
-          <Route path='/'>
+          <Route path='/chatinfo'>
+            <ChatInfoPage />
+          </Route>
+          <Route exact path='/'>
             <LandingPage />
           </Route>
         </Switch>
