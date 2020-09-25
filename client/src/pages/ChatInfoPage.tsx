@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 
 const ChatInfoPage = (): JSX.Element => {
-  console.log('===== CHAT INFO PAGE');
 
   const users = useSelector((state: RootState) => state.users);
 

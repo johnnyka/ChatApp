@@ -1,31 +1,37 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
+import { sendMessage, isTyping } from '../redux/slices/emitEventSlice';
 
-const MessageSubmitForm = ({ isTypingMessage }: { isTypingMessage: ((bool: boolean) => void) }): JSX.Element => {
+const MessageSubmitForm = (): JSX.Element => {
+
+  const dispatch = useDispatch();
 
   const [myMsg, setMyMsg] = useState<string>('');
 
   const isTypingUsers = useSelector((state: RootState) => state.isTypingList);
-  console.log('isTyping:', isTypingUsers, !!isTypingUsers.length);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    console.log('Send message');
-
-    setMyMsg('');
+    
+    if (myMsg) {
+      dispatch(sendMessage(myMsg));
+      setMyMsg('');
+    }
   };
 
   useEffect(() => {
-    myMsg !== '' ? isTypingMessage(true) : isTypingMessage(false);
-  }, [myMsg]);
+    myMsg === '' ? dispatch(isTyping(false)) : dispatch(isTyping(true));
+  }, [myMsg, dispatch]);
 
   const renderIsTypingUser = (): string => {
     if (isTypingUsers.length === 1) return `${isTypingUsers[0]} is typing...`;
 
     const lastCommaOccurenceToEnd: RegExp = /,([^,]*)$/;
-    const typingUsers: string = isTypingUsers.join(', ').replace(lastCommaOccurenceToEnd, ' &' + '$1');
+    const typingUsers: string = isTypingUsers
+      .join(', ')
+      .replace(lastCommaOccurenceToEnd, [' &', '$1'].join(''));
     return `${typingUsers} are typing...`;
   };
 
@@ -37,6 +43,8 @@ const MessageSubmitForm = ({ isTypingMessage }: { isTypingMessage: ((bool: boole
           name='myMsg'
           value={myMsg}
           onChange={(e) => setMyMsg(e.target.value)}
+          autoFocus={true}
+          placeholder='Message'
         />
         <input type='submit' value='Submit' />
       </form>

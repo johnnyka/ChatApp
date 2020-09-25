@@ -12,8 +12,5 @@ const nameSlice = createSlice({
   }
 });
 
-// Export action type strings.
 export const { updateName } = nameSlice.actions;
-
-// Export reducer.
 export default nameSlice.reducer;

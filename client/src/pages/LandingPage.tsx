@@ -6,7 +6,6 @@ import { updateName } from '../redux/slices/nameSlice';
 import { validateName } from '../utils/index';
 
 const LandingPage = (): JSX.Element => {
-  console.log('===== LANDING PAGE')
   const dispatch = useDispatch();
 
   const [name, setName] = useState<string>('');
@@ -16,13 +15,11 @@ const LandingPage = (): JSX.Element => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    console.log('HANDLE SUBMIT')
     validateName(name, setIsValidName, setValidationMsg);
   };
 
   useEffect(() => {
     if (isValidName) {
-      console.log('USE EFFECT, IF')
       dispatch(updateName(name))
       setRedirect(true);
     }
@@ -40,6 +37,8 @@ const LandingPage = (): JSX.Element => {
             name='name'
             value={name}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+            autoFocus={true}
+            placeholder='Username'
           />
         </label>
         <input type='submit' value='Submit' />
@@ -52,9 +51,3 @@ const LandingPage = (): JSX.Element => {
 };
 
 export default LandingPage;
-
-// TODO:
-// Handle when disconnected from server.
-
-// Put all states in Redux store. 
-// Make validate name check in async thunk?

@@ -500,3 +500,347 @@
 9/24/2020, 23:32:44 | tom | Left chat
 9/24/2020, 23:32:45 |  | Joined chat
 9/24/2020, 23:32:45 |  | Joined chat
+9/25/2020, 09:05:59 | john | Joined chat
+9/25/2020, 09:06:06 | sara | Joined chat
+9/25/2020, 09:06:15 | tom | Joined chat
+9/25/2020, 09:06:28 | jane | Joined chat
+9/25/2020, 09:07:43 | tom | Left chat
+9/25/2020, 09:07:48 | tom | Joined chat
+9/25/2020, 09:08:06 | tom | Left chat
+9/25/2020, 09:08:13 | tommy | Joined chat
+9/25/2020, 09:09:26 | john | Left chat
+9/25/2020, 09:11:44 | sara | Left chat
+9/25/2020, 09:14:12 | jane | Left chat
+9/25/2020, 09:18:38 | tommy | Left chat
+9/25/2020, 09:23:38 |  | Joined chat
+9/25/2020, 09:23:38 |  | Joined chat
+9/25/2020, 09:23:38 |  | Joined chat
+9/25/2020, 09:24:33 |  | Left chat
+9/25/2020, 09:24:33 |  | Left chat
+9/25/2020, 09:25:03 |  | Left chat
+9/25/2020, 09:32:02 |  | Joined chat
+9/25/2020, 09:32:02 |  | Joined chat
+9/25/2020, 09:32:02 |  | Joined chat
+9/25/2020, 09:32:59 |  | Left chat
+9/25/2020, 09:33:00 |  | Joined chat
+9/25/2020, 09:33:00 |  | Joined chat
+9/25/2020, 09:33:00 |  | Joined chat
+9/25/2020, 09:33:23 |  | Left chat
+9/25/2020, 09:33:23 |  | Left chat
+9/25/2020, 09:35:09 |  | Left chat
+9/25/2020, 09:35:09 |  | Joined chat
+9/25/2020, 09:35:09 |  | Joined chat
+9/25/2020, 09:35:10 |  | Joined chat
+9/25/2020, 09:35:12 |  | Left chat
+9/25/2020, 09:35:15 |  | Left chat
+9/25/2020, 09:35:16 |  | Left chat
+9/25/2020, 09:35:22 | adfasdf | Joined chat
+9/25/2020, 09:35:35 |  | Left chat
+9/25/2020, 09:35:35 |  | Left chat
+9/25/2020, 09:35:47 | adfasdf | Left chat
+9/25/2020, 09:35:48 |  | Joined chat
+9/25/2020, 09:35:50 |  | Left chat
+9/25/2020, 09:35:52 | asdfas | Joined chat
+9/25/2020, 09:37:15 | asdfas | Left chat
+9/25/2020, 09:37:16 |  | Joined chat
+9/25/2020, 09:42:19 |  | Joined chat
+9/25/2020, 09:43:28 |  | Left chat
+9/25/2020, 09:43:31 | john | Joined chat
+9/25/2020, 09:43:38 | sara | Joined chat
+9/25/2020, 09:43:46 | john | hej
+9/25/2020, 09:44:02 | john | hur mår du?
+9/25/2020, 09:44:34 | sara | jag mår bra
+9/25/2020, 09:45:16 | john | Left chat
+9/25/2020, 09:46:49 | sara | Left chat
+9/25/2020, 10:12:56 |  | Joined chat
+9/25/2020, 10:12:56 |  | Joined chat
+9/25/2020, 10:13:52 |  | Left chat
+9/25/2020, 10:13:53 |  | Joined chat
+9/25/2020, 10:13:53 |  | Joined chat
+9/25/2020, 10:14:07 |  | Left chat
+9/25/2020, 10:14:08 |  | Joined chat
+9/25/2020, 10:14:08 |  | Joined chat
+9/25/2020, 10:14:18 |  | Left chat
+9/25/2020, 10:14:23 |  | Left chat
+9/25/2020, 10:14:25 |  | Left chat
+9/25/2020, 10:14:26 |  | Joined chat
+9/25/2020, 10:14:26 |  | Joined chat
+9/25/2020, 10:14:38 |  | Left chat
+9/25/2020, 10:15:22 |  | Left chat
+9/25/2020, 10:15:25 |  | Left chat
+9/25/2020, 10:15:26 |  | Joined chat
+9/25/2020, 10:15:26 |  | Joined chat
+9/25/2020, 10:16:47 |  | Left chat
+9/25/2020, 10:19:32 |  | Left chat
+9/25/2020, 10:19:33 |  | Joined chat
+9/25/2020, 10:19:33 |  | Joined chat
+9/25/2020, 10:20:03 |  | Left chat
+9/25/2020, 10:20:03 |  | Left chat
+9/25/2020, 10:20:57 |  | Joined chat
+9/25/2020, 10:20:58 |  | Joined chat
+9/25/2020, 10:21:25 |  | Left chat
+9/25/2020, 10:21:26 |  | Joined chat
+9/25/2020, 10:21:26 |  | Joined chat
+9/25/2020, 10:21:42 |  | Left chat
+9/25/2020, 10:21:42 |  | Joined chat
+9/25/2020, 10:21:43 |  | Joined chat
+9/25/2020, 10:21:51 |  | Left chat
+9/25/2020, 10:21:53 |  | Left chat
+9/25/2020, 10:21:53 |  | Left chat
+9/25/2020, 10:21:56 |  | Left chat
+9/25/2020, 10:22:00 | john | Joined chat
+9/25/2020, 10:22:05 | sara | Joined chat
+9/25/2020, 10:22:37 | john | adsf
+9/25/2020, 10:22:41 | sara | efefe
+9/25/2020, 10:23:46 | sara | Left chat
+9/25/2020, 10:23:47 |  | Joined chat
+9/25/2020, 10:23:47 |  | Joined chat
+9/25/2020, 10:24:06 |  | Left chat
+9/25/2020, 10:24:07 |  | Joined chat
+9/25/2020, 10:24:07 |  | Joined chat
+9/25/2020, 10:24:10 | john | Left chat
+9/25/2020, 10:24:17 |  | Left chat
+9/25/2020, 10:25:05 |  | Left chat
+9/25/2020, 10:25:06 |  | Joined chat
+9/25/2020, 10:25:06 |  | Joined chat
+9/25/2020, 10:25:27 |  | Left chat
+9/25/2020, 10:25:57 |  | Left chat
+9/25/2020, 10:25:58 |  | Joined chat
+9/25/2020, 10:25:58 |  | Joined chat
+9/25/2020, 10:26:26 |  | Left chat
+9/25/2020, 10:27:31 |  | Joined chat
+9/25/2020, 10:27:31 |  | Joined chat
+9/25/2020, 10:28:50 |  | Left chat
+9/25/2020, 10:28:51 |  | Joined chat
+9/25/2020, 10:28:51 |  | Joined chat
+9/25/2020, 10:28:59 |  | Left chat
+9/25/2020, 10:28:59 |  | Joined chat
+9/25/2020, 10:28:59 |  | Joined chat
+9/25/2020, 10:29:16 |  | Left chat
+9/25/2020, 10:29:21 |  | Left chat
+9/25/2020, 10:29:28 |  | Left chat
+9/25/2020, 10:29:29 |  | Joined chat
+9/25/2020, 10:29:29 |  | Joined chat
+9/25/2020, 10:29:30 |  | Left chat
+9/25/2020, 10:29:32 |  | Left chat
+9/25/2020, 10:29:54 |  | Left chat
+9/25/2020, 10:30:07 | john | Joined chat
+9/25/2020, 10:30:10 | sara | Joined chat
+9/25/2020, 10:30:13 | tom | Joined chat
+9/25/2020, 10:30:17 | jan | Joined chat
+9/25/2020, 10:30:54 | john | asdf
+9/25/2020, 10:31:00 | jan | f
+9/25/2020, 10:31:45 | sara | Left chat
+9/25/2020, 10:31:52 | john | Left chat
+9/25/2020, 10:31:59 | tom | Left chat
+9/25/2020, 10:32:02 | jan | Left chat
+9/25/2020, 10:32:17 |  | Joined chat
+9/25/2020, 10:32:17 |  | Joined chat
+9/25/2020, 10:32:17 |  | Joined chat
+9/25/2020, 10:32:17 |  | Joined chat
+9/25/2020, 10:32:37 |  | Left chat
+9/25/2020, 10:32:38 |  | Joined chat
+9/25/2020, 10:32:38 |  | Joined chat
+9/25/2020, 10:32:38 |  | Joined chat
+9/25/2020, 10:32:38 |  | Joined chat
+9/25/2020, 10:32:47 |  | Left chat
+9/25/2020, 10:32:47 |  | Left chat
+9/25/2020, 10:32:47 |  | Left chat
+9/25/2020, 10:34:11 |  | Left chat
+9/25/2020, 10:34:12 |  | Joined chat
+9/25/2020, 10:34:12 |  | Joined chat
+9/25/2020, 10:34:12 |  | Joined chat
+9/25/2020, 10:34:12 |  | Joined chat
+9/25/2020, 10:34:23 |  | Left chat
+9/25/2020, 10:34:23 |  | Left chat
+9/25/2020, 10:34:23 |  | Left chat
+9/25/2020, 10:34:32 |  | Left chat
+9/25/2020, 10:34:33 |  | Joined chat
+9/25/2020, 10:34:33 |  | Joined chat
+9/25/2020, 10:34:33 |  | Joined chat
+9/25/2020, 10:34:33 |  | Joined chat
+9/25/2020, 10:34:42 |  | Left chat
+9/25/2020, 10:34:42 |  | Left chat
+9/25/2020, 10:34:42 |  | Left chat
+9/25/2020, 10:34:45 |  | Left chat
+9/25/2020, 10:35:47 | john | Joined chat
+9/25/2020, 10:35:51 | sara | Joined chat
+9/25/2020, 10:35:54 | tom | Joined chat
+9/25/2020, 10:35:58 | jane | Joined chat
+9/25/2020, 10:36:38 | jane | Left chat
+9/25/2020, 10:36:38 |  | Joined chat
+9/25/2020, 10:36:40 | john | Left chat
+9/25/2020, 10:36:41 | tom | Left chat
+9/25/2020, 10:36:43 | sara | Left chat
+9/25/2020, 10:36:44 |  | Left chat
+9/25/2020, 10:36:48 | john | Joined chat
+9/25/2020, 10:36:52 | sara | Joined chat
+9/25/2020, 10:37:04 | john | Left chat
+9/25/2020, 10:37:11 | sara | Left chat
+9/25/2020, 10:37:27 | john | Joined chat
+9/25/2020, 10:37:38 | sara | Joined chat
+9/25/2020, 10:37:54 | john | Left chat
+9/25/2020, 10:37:58 | john | Joined chat
+9/25/2020, 10:38:00 | john | Left chat
+9/25/2020, 10:38:05 | sara | Left chat
+9/25/2020, 10:38:09 | john | Joined chat
+9/25/2020, 10:38:14 | sara | Joined chat
+9/25/2020, 10:38:17 | tom | Joined chat
+9/25/2020, 10:38:20 | jane | Joined chat
+9/25/2020, 10:38:43 | jane | df
+9/25/2020, 10:38:57 | tom | dddd
+9/25/2020, 10:39:11 | sara | sssss
+9/25/2020, 10:39:13 | sara | jaskldjf
+9/25/2020, 10:40:06 | john | Left chat
+9/25/2020, 10:40:07 |  | Joined chat
+9/25/2020, 10:40:07 |  | Joined chat
+9/25/2020, 10:40:07 |  | Joined chat
+9/25/2020, 10:40:07 |  | Joined chat
+9/25/2020, 10:40:24 | sara | Left chat
+9/25/2020, 10:40:28 | tom | Left chat
+9/25/2020, 10:40:28 |  | Left chat
+9/25/2020, 10:40:29 |  | Joined chat
+9/25/2020, 10:40:29 |  | Joined chat
+9/25/2020, 10:40:29 |  | Joined chat
+9/25/2020, 10:40:29 |  | Joined chat
+9/25/2020, 10:40:30 |  | Left chat
+9/25/2020, 10:40:31 | jane | Left chat
+9/25/2020, 10:40:37 |  | Left chat
+9/25/2020, 10:40:37 |  | Left chat
+9/25/2020, 10:40:38 |  | Left chat
+9/25/2020, 10:40:59 |  | Left chat
+9/25/2020, 10:40:59 |  | Left chat
+9/25/2020, 10:40:59 |  | Left chat
+9/25/2020, 10:42:03 | john | Joined chat
+9/25/2020, 10:42:36 | john | Left chat
+9/25/2020, 10:42:37 |  | Joined chat
+9/25/2020, 10:42:39 |  | Left chat
+9/25/2020, 10:43:16 | john | Joined chat
+9/25/2020, 10:43:19 | sara | Joined chat
+9/25/2020, 10:43:21 | tom | Joined chat
+9/25/2020, 10:43:25 | jane | Joined chat
+9/25/2020, 10:43:29 | jane | Left chat
+9/25/2020, 10:43:37 | Jane | Joined chat
+9/25/2020, 10:43:50 | Jane | d
+9/25/2020, 10:43:53 | sara | d
+9/25/2020, 10:43:55 | john | a
+9/25/2020, 10:45:37 | sara | Left chat
+9/25/2020, 10:45:38 |  | Joined chat
+9/25/2020, 10:45:38 |  | Joined chat
+9/25/2020, 10:45:38 |  | Joined chat
+9/25/2020, 10:45:38 |  | Joined chat
+9/25/2020, 10:45:47 | Jane | Left chat
+9/25/2020, 10:45:51 | john | Left chat
+9/25/2020, 10:45:56 | tom | Left chat
+9/25/2020, 10:45:57 |  | Left chat
+9/25/2020, 10:45:58 |  | Joined chat
+9/25/2020, 10:45:58 |  | Joined chat
+9/25/2020, 10:45:58 |  | Joined chat
+9/25/2020, 10:45:58 |  | Joined chat
+9/25/2020, 10:46:09 |  | Left chat
+9/25/2020, 10:46:09 |  | Left chat
+9/25/2020, 10:46:09 |  | Left chat
+9/25/2020, 10:46:54 |  | Left chat
+9/25/2020, 10:46:54 |  | Left chat
+9/25/2020, 10:47:24 |  | Left chat
+9/25/2020, 10:47:24 |  | Left chat
+9/25/2020, 10:47:33 |  | Joined chat
+9/25/2020, 10:47:33 |  | Joined chat
+9/25/2020, 10:47:33 |  | Joined chat
+9/25/2020, 10:47:33 |  | Joined chat
+9/25/2020, 10:49:10 |  | Left chat
+9/25/2020, 10:49:11 |  | Joined chat
+9/25/2020, 10:49:11 |  | Joined chat
+9/25/2020, 10:49:11 |  | Joined chat
+9/25/2020, 10:49:11 |  | Joined chat
+9/25/2020, 10:49:20 |  | Left chat
+9/25/2020, 10:49:20 |  | Left chat
+9/25/2020, 10:49:20 |  | Left chat
+9/25/2020, 10:51:04 |  | Left chat
+9/25/2020, 10:51:05 |  | Joined chat
+9/25/2020, 10:51:05 |  | Joined chat
+9/25/2020, 10:51:05 |  | Joined chat
+9/25/2020, 10:51:05 |  | Joined chat
+9/25/2020, 10:51:23 |  | Left chat
+9/25/2020, 10:51:24 |  | Joined chat
+9/25/2020, 10:51:24 |  | Joined chat
+9/25/2020, 10:51:24 |  | Joined chat
+9/25/2020, 10:51:24 |  | Joined chat
+9/25/2020, 10:51:24 |  | Left chat
+9/25/2020, 10:51:24 |  | Left chat
+9/25/2020, 10:51:24 |  | Left chat
+9/25/2020, 10:51:30 |  | Left chat
+9/25/2020, 10:51:31 |  | Joined chat
+9/25/2020, 10:51:31 |  | Joined chat
+9/25/2020, 10:51:31 |  | Joined chat
+9/25/2020, 10:51:31 |  | Joined chat
+9/25/2020, 10:51:35 |  | Left chat
+9/25/2020, 10:51:35 |  | Left chat
+9/25/2020, 10:51:35 |  | Left chat
+9/25/2020, 10:51:38 |  | Left chat
+9/25/2020, 10:51:39 |  | Joined chat
+9/25/2020, 10:51:39 |  | Joined chat
+9/25/2020, 10:51:39 |  | Joined chat
+9/25/2020, 10:51:39 |  | Joined chat
+9/25/2020, 10:51:54 |  | Left chat
+9/25/2020, 10:51:54 |  | Left chat
+9/25/2020, 10:51:54 |  | Left chat
+9/25/2020, 10:52:01 |  | Left chat
+9/25/2020, 10:52:01 |  | Left chat
+9/25/2020, 10:52:01 |  | Left chat
+9/25/2020, 10:52:41 |  | Left chat
+9/25/2020, 10:52:42 |  | Joined chat
+9/25/2020, 10:52:42 |  | Joined chat
+9/25/2020, 10:52:42 |  | Joined chat
+9/25/2020, 10:52:42 |  | Joined chat
+9/25/2020, 10:53:00 |  | Left chat
+9/25/2020, 10:53:00 |  | Left chat
+9/25/2020, 10:53:00 |  | Left chat
+9/25/2020, 10:54:29 |  | Left chat
+9/25/2020, 10:54:29 |  | Left chat
+9/25/2020, 10:54:29 |  | Left chat
+9/25/2020, 10:54:29 |  | Left chat
+9/25/2020, 11:20:19 | john | Joined chat
+9/25/2020, 11:20:22 | sara | Joined chat
+9/25/2020, 11:20:24 | tom | Joined chat
+9/25/2020, 11:20:33 | jane | Joined chat
+9/25/2020, 11:20:55 | tom | ff
+9/25/2020, 11:21:10 | john | as
+9/25/2020, 11:21:13 | sara | dd
+9/25/2020, 11:36:15 |  | Joined chat
+9/25/2020, 11:36:15 |  | Joined chat
+9/25/2020, 11:36:16 |  | Left chat
+9/25/2020, 11:37:01 | john | Joined chat
+9/25/2020, 11:37:13 | sara | Joined chat
+9/25/2020, 11:37:17 | tom | Joined chat
+9/25/2020, 11:37:20 | jane | Joined chat
+9/25/2020, 11:37:56 | jane | adfasd
+9/25/2020, 11:38:00 | john | adsfas
+9/25/2020, 11:38:13 | tom | Left chat
+9/25/2020, 11:38:24 | jonh | Joined chat
+9/25/2020, 11:39:06 | john | Left chat
+9/25/2020, 11:39:06 |  | Joined chat
+9/25/2020, 11:39:13 |  | Left chat
+9/25/2020, 11:39:17 | jsdflk | Joined chat
+9/25/2020, 11:39:21 | jsdflk | Left chat
+9/25/2020, 11:40:16 | Eric | Joined chat
+9/25/2020, 11:40:24 | Eric | adsfa
+9/25/2020, 11:43:03 | Eric | Left chat
+9/25/2020, 11:43:04 |  | Joined chat
+9/25/2020, 11:43:08 |  | Left chat
+9/25/2020, 11:43:10 | sara | Left chat
+9/25/2020, 11:43:12 | jane | Left chat
+9/25/2020, 11:43:14 | jonh | Left chat
+9/25/2020, 11:43:23 | john | Joined chat
+9/25/2020, 11:43:25 | sara | Joined chat
+9/25/2020, 11:43:31 | sara | Left chat
+9/25/2020, 11:44:31 | john | Left chat
+9/25/2020, 11:44:32 |  | Joined chat
+9/25/2020, 11:44:34 |  | Left chat
+9/25/2020, 11:44:40 | john | Joined chat
+9/25/2020, 11:44:43 | sara | Joined chat
+9/25/2020, 11:45:07 | sara | Left chat
+9/25/2020, 11:45:19 | tom | Joined chat
+9/25/2020, 11:45:24 | tom | djsafklsdj
+9/25/2020, 11:47:08 | tom | Left chat
+9/25/2020, 11:47:12 | john | Left chat

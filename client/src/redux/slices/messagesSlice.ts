@@ -16,8 +16,5 @@ const messagesSlice = createSlice({
   }
 });
 
-// Export action type strings.
 export const { addMessage, clearMessages } = messagesSlice.actions;
-
-// Export reducer.
 export default messagesSlice.reducer;

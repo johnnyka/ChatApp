@@ -21,21 +21,14 @@ io.on('connect', (socket) => {
 
   // When a new user joins the chat room...
   socket.on('joinRoom', ({ username }: { username: string }) => {
+    console.log('joinRoom, All users:', socket.id, username);
     logger(username, 'Joined chat');
 
     const allUsers = storeUser({ id: socket.id, username });
-    console.log('joinRoom, All users:', socket.id, username);
 
-    // Subscribe socket to channel.
     socket.join(room);
-
-    // Emit a welcome message to user.
     socket.emit('message', messageObj(botName, `Welcome to ${room}, ${username}. Say 👋 \u00A0 to your friends!`));
-
-    // Broadcast that new user has joined.
     socket.broadcast.to(room).emit('message', messageObj(botName, `${username} joined the chat.`));
-
-    // Emit chat info.
     io.to(room).emit('chatInfo', { users: allUsers });
   });
 
@@ -44,22 +37,16 @@ io.on('connect', (socket) => {
     console.log('isTyping, socket:', socket.id);
 
     const user = getUser(socket.id);
-
-    // Broadcast.
-    if (user) socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: bool });
+    socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: bool });
   });
 
   // When a new message is received...
-  socket.on('message', (msg) => {
+  socket.on('message', (msg: string) => {
     console.log('message, socket:', socket.id)
-    
+
     const user = getUser(socket.id);
-    if (user) {
-      logger(user.username, msg);
-      
-      // Broadcast message.
-      socket.broadcast.to(room).emit('message', messageObj(user.username, msg))
-    }    
+    logger(user.username, msg);
+    socket.broadcast.to(room).emit('message', messageObj(user.username, msg))
   });
 
   // When user disconnects...
@@ -67,14 +54,9 @@ io.on('connect', (socket) => {
     console.log('disconnect, socket:', socket.id);
 
     const user = getUser(socket.id);
-    if (user) {
-      logger(user.username, 'Left chat');
-      
-      // Broadcast message.
-      socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`))
-    }
+    logger(user.username, 'Left chat');
+    socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`))
 
-    // Broadcast chat info.
     const allUsers = removeUser(socket.id);
     socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
   });
