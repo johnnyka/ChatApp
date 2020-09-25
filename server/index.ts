@@ -46,7 +46,7 @@ io.on('connect', (socket) => {
 
     const user = getUser(socket.id);
     logger(user.username, msg);
-    socket.broadcast.to(room).emit('message', messageObj(user.username, msg))
+    io.to(room).emit('message', messageObj(user.username, msg))
   });
 
   // When user disconnects...
