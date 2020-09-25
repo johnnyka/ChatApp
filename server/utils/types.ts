@@ -3,8 +3,8 @@ export type TUser = {
   username: string;
 };
 
-export type TMessage = { 
+export type TMessage = {
   author: string,
-  time: string, 
+  time: string,
   message: string
 };

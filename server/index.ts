@@ -4,7 +4,7 @@ import socketio from 'socket.io';
 import bodyParser from 'body-parser';
 import validation from './api/validation';
 import { storeUser, getUser, removeUser } from './utils/users';
-import { messageObj } from './utils/messages';
+import messageObj from './utils/messages';
 import { logger, createLogFolder } from './utils/logger';
 
 const app = express();
@@ -17,13 +17,13 @@ app.use(bodyParser.json());
 
 app.use('/api/validation', validation);
 
-const inactivityTime: number = 15*60*1000;
+const inactivityTime: number = 15 * 60 * 1000;
 
 io.on('connect', (socket) => {
   const room = 'Chat room';
   const botName = 'ChatBot';
 
-  let isInactive: boolean = false;
+  let isInactive = false;
 
   // When a new user joins the chat room...
   socket.on('joinRoom', ({ username }: { username: string }) => {
@@ -49,28 +49,26 @@ io.on('connect', (socket) => {
 
     clearTimeout(timer);
     timer = setTimeout(() => {
-      console.log('inactivity, socket:', socket.id, user.username)
+      console.log('inactivity, socket:', socket.id, user.username);
       isInactive = true;
-      logger(user.username, 'Disconnected due to inactivity.')
+      logger(user.username, 'Disconnected due to inactivity.');
       socket.disconnect(true);
-      socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`))
+      socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`));
       const allUsers = removeUser(socket.id);
-      socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
+      socket.broadcast.to(room).emit('chatInfo', { users: allUsers });
     }, inactivityTime);
   });
 
   // When a new message is received...
   socket.on('message', (msg: string) => {
-
     const user = getUser(socket.id);
-    console.log('message, socket:', socket.id, user.username)
+    console.log('message, socket:', socket.id, user.username);
     logger(user.username, msg);
-    io.to(room).emit('message', messageObj(user.username, msg))
+    io.to(room).emit('message', messageObj(user.username, msg));
   });
 
   // When user disconnects...
   socket.on('disconnect', () => {
-
     const user = getUser(socket.id);
     console.log('disconnect, socket:', socket.id, user.username);
     logger(user.username, 'Left chat.');
@@ -78,7 +76,7 @@ io.on('connect', (socket) => {
     socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: false });
 
     const allUsers = removeUser(socket.id);
-    socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
+    socket.broadcast.to(room).emit('chatInfo', { users: allUsers });
   });
 });
 
@@ -87,9 +85,9 @@ const PORT = process.env.PORT || 8080;
 // eslint-disable-next-line
 server.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
-const handle = (signal: string) => {
+const handle = (): void => {
   server.close(() => {
-    io.close()
+    io.close();
     process.exit(0);
   });
 };
