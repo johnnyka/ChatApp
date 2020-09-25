@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/api/validation', validation);
 
-const inactivityTime: number = 15*60*1000;
+const inactivityTime: number = 15*60*10000;
 
 io.on('connect', (socket) => {
   const room = 'Chat room';
@@ -48,7 +48,7 @@ io.on('connect', (socket) => {
     timer = setTimeout(() => {
       logger(user.username, 'Disconnected due to inactivity.')
       socket.disconnect(true); // -> io server disconnect
-                              // Server crash -> transport error
+      // Server crash -> transport error
       socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`))
       const allUsers = removeUser(socket.id);
       socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
@@ -82,3 +82,13 @@ const PORT = process.env.PORT || 8080;
 
 // eslint-disable-next-line
 server.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
+
+const handle = (signal: string) => {
+  server.close(() => {
+    io.close()
+    process.exit(0);
+  });
+};
+
+process.on('SIGINT', handle);
+process.on('SIGTERM', handle);
