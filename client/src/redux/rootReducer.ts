@@ -5,6 +5,7 @@ import usersReducer from './slices/usersSlice';
 import isTypingReducer from './slices/isTypingSlice';
 import emitEventReducer from './slices/emitEventSlice';
 import disconnectReducer from './slices/disconnectSlice';
+import infoModalReducer from './slices/infoModalSlice';
 
 const rootReducer = combineReducers({
   name: nameReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   isTypingList: isTypingReducer,
   emitEvent: emitEventReducer,
-  disconnected: disconnectReducer
+  disconnected: disconnectReducer,
+  infoModalVisibility: infoModalReducer
 });
 
 // Export type for later type definition.

@@ -6,12 +6,14 @@ import useConnectSocket from '../hooks/socket';
 import { NavigationBar, MessageBoard, MessageSubmitForm } from '../components';
 import { RootState } from '../redux/rootReducer';
 import { updateName } from '../redux/slices/nameSlice';
+import ChatInfoPage from './ChatInfoPage';
 
 const ChatPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const messages = useSelector((state: RootState) => state.messages);
   const isDisconnected = useSelector((state: RootState) => state.disconnected);
+  const infoModal = useSelector((state: RootState) => state.infoModalVisibility);
 
   useEffect(() => {
     // Persisted name for returning user.
@@ -28,6 +30,7 @@ const ChatPage = (): JSX.Element => {
         <MessageBoard />
         <MessageSubmitForm />
 
+        {infoModal ? <ChatInfoPage /> : null}
         {isDisconnected.bool ? <Redirect to='/' /> : null}
       </>
     )
