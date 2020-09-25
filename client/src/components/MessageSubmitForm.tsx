@@ -28,7 +28,7 @@ const MessageSubmitForm = (): JSX.Element => {
   const renderIsTypingUser = (): string => {
     if (isTypingUsers.length === 1) return `${isTypingUsers[0]} is typing...`;
 
-    const lastCommaOccurenceToEnd: RegExp = /,([^,]*)$/;
+    const lastCommaOccurenceToEnd = /,([^,]*)$/;
     const typingUsers: string = isTypingUsers
       .join(', ')
       .replace(lastCommaOccurenceToEnd, [' &', '$1'].join(''));

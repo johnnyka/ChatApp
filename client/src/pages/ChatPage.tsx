@@ -16,7 +16,7 @@ const ChatPage = (): JSX.Element => {
   const infoModal = useSelector((state: RootState) => state.infoModalVisibility);
 
   useEffect(() => {
-    // Persisted name for returning user.
+    // Get persisted name for returning user.
     const persistedName: string | null = localStorage.getItem('username');
     if (persistedName) dispatch(updateName(persistedName));
   }, []);

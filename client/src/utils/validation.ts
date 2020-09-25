@@ -18,7 +18,7 @@ export const validateName = (
       setIsValidName(res.valid);
       setValidationMsg(res.msg)
     })
-    .catch(err => {
+    .catch(_err => {
       setIsValidName(false);
       setValidationMsg('Server is unavailable. Please try again later.')
     });

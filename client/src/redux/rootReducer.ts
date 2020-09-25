@@ -17,7 +17,5 @@ const rootReducer = combineReducers({
   infoModalVisibility: infoModalReducer
 });
 
-// Export type for later type definition.
 export type RootState = ReturnType<typeof rootReducer>
-
 export default rootReducer;

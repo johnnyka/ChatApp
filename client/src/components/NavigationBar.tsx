@@ -8,7 +8,7 @@ const NavigationBar = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const leaveChat = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+  const leaveChat = (): void => {
     history.goBack();
   };
 
@@ -18,9 +18,8 @@ const NavigationBar = (): JSX.Element => {
 
   return (
     <section>
-      <button type='button' onClick={(e) => leaveChat(e)}>Leave chat</button>
+      <button type='button' onClick={() => leaveChat()}>Leave chat</button>
       <p>Chat room</p>
-      {/* <Link to='/chatinfo'>Info</Link> */}
       <button type='button' onClick={() => showInfo()}>Info</button>
     </section>
   );

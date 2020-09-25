@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TEmitEvent } from '../../utils/types';
 
-const initialState: { event: string | null, value: string | boolean } = { event: null, value: '' };
+const initialState: TEmitEvent = { event: null, value: '' };
 
 const emitEventSlice = createSlice({
   name: 'emitEvent',

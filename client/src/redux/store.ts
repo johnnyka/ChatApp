@@ -7,6 +7,4 @@ const store = configureStore({
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(socketMiddleware),
 });
 
-// Comment: Skip hot-reloading of rootReducer.
-
 export default store;

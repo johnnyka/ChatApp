@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateName } from '../redux/slices/nameSlice';
-import { validateName } from '../utils/index';
+import { validateName } from '../utils/validation';
 import { RootState } from '../redux/rootReducer';
 import { disconnectUser } from '../redux/slices/disconnectSlice';
 

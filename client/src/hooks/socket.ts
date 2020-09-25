@@ -8,10 +8,10 @@ import { updateUserList } from '../redux/slices/usersSlice';
 import { addToIsTypingList, removeFromIsTypingList } from '../redux/slices/isTypingSlice';
 import { isTyping } from '../redux/slices/emitEventSlice';
 import { disconnectUser } from '../redux/slices/disconnectSlice';
-import { TMessage } from '../utils/types';
+import { TMessage, TIsTypingObj } from '../utils/types';
 
 // Custom Hook to extract the socket logic from the ChatPage component.
-const useConnectSocket = () => {
+const useConnectSocket = (): void => {
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const useConnectSocket = () => {
       dispatch(updateUserList(users));
     })
 
-    socketRef.current.on('isTyping', ({ user, isTyping }: { user: string, isTyping: boolean }) => {
+    socketRef.current.on('isTyping', ({ user, isTyping }: TIsTypingObj) => {
       isTyping
         ? dispatch(addToIsTypingList(user))
         : dispatch(removeFromIsTypingList(user));
@@ -70,7 +70,6 @@ const useConnectSocket = () => {
     const { event, value } = emitEventState;
     if (event) emitEvent(event, value)
   }, [emitEventState]);
-
 };
 
 export default useConnectSocket;

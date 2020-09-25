@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TIsDisconnected } from '../../utils/types';
 
-const initialState: { bool: boolean, reason: string } = { bool: false, reason: '' };
+const initialState: TIsDisconnected = { bool: false, reason: '' };
 
 const disconnectSlice = createSlice({
   name: 'isDisconnected',
   initialState,
   reducers: {
-    disconnectUser(state, action: PayloadAction<{ bool: boolean, reason: string }>) {
+    disconnectUser(_state, action: PayloadAction<TIsDisconnected>) {
       return action.payload;
     }
   }

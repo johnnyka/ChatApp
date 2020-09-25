@@ -1,17 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { create } from 'domain';
 
-const initialState: boolean = false;
+const initialState = false;
 
 const infoModalSlice = createSlice({
   name: 'infoModalVisibility',
   initialState,
   reducers: {
-    showInfoModal(_state, _action: PayloadAction<void>) {
-      return true;
+    showInfoModal(state, _action: PayloadAction<void>) {
+      return !state;
     },
-    hideInfoModal(_state, _action: PayloadAction<void>) {
-      return false;
+    hideInfoModal(state, _action: PayloadAction<void>) {
+      return !state;
     }
   }
 });
