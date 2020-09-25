@@ -15,12 +15,13 @@ app.use(bodyParser.json());
 
 app.use('/api/validation', validation);
 
-const inactivityTime: number = 15*60*10000;
+const inactivityTime: number = 15*60*1000;
 
 io.on('connect', (socket) => {
   const room = 'Chat room';
   const botName = 'ChatBot';
 
+  let isInactive: boolean = false;
 
   // When a new user joins the chat room...
   socket.on('joinRoom', ({ username }: { username: string }) => {
@@ -46,6 +47,8 @@ io.on('connect', (socket) => {
 
     clearTimeout(timer);
     timer = setTimeout(() => {
+      console.log('inactivity, socket:', socket.id, user.username)
+      isInactive = true;
       logger(user.username, 'Disconnected due to inactivity.')
       socket.disconnect(true); // -> io server disconnect
       // Server crash -> transport error
@@ -70,7 +73,7 @@ io.on('connect', (socket) => {
     const user = getUser(socket.id);
     console.log('disconnect, socket:', socket.id, user.username);
     logger(user.username, 'Left chat.');
-    socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`))
+    if (!isInactive) socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`));
     socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: false });
 
     const allUsers = removeUser(socket.id);
