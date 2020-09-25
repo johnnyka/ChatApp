@@ -7,6 +7,7 @@ import { addMessage, clearMessages } from '../redux/slices/messagesSlice';
 import { updateUserList } from '../redux/slices/usersSlice';
 import { addToIsTypingList, removeFromIsTypingList } from '../redux/slices/isTypingSlice';
 import { isTyping } from '../redux/slices/emitEventSlice';
+import { disconnectUser } from '../redux/slices/disconnectSlice';
 import { TMessage } from '../utils/types';
 
 // Custom Hook to extract the socket logic from the ChatPage component.
@@ -37,6 +38,22 @@ const useConnectSocket = () => {
         ? dispatch(addToIsTypingList(user))
         : dispatch(removeFromIsTypingList(user));
     })
+
+    socketRef.current.on('disconnect', (reason: string) => {
+      switch (reason) {
+        case 'io server disconnect': {
+          dispatch(disconnectUser({ bool: true, reason: 'inactivity'}));
+          break;
+        }
+        case 'transport error': {
+          dispatch(disconnectUser({ bool: true, reason: 'server is down'}))
+          break;
+        }
+        default: {
+          // Client self-disconnected or other reason...
+        }
+      }
+    });
 
     return () => {
       dispatch(clearMessages(null));

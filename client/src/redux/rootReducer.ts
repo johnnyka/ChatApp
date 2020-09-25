@@ -4,13 +4,15 @@ import messagesReducer from './slices/messagesSlice';
 import usersReducer from './slices/usersSlice';
 import isTypingReducer from './slices/isTypingSlice';
 import emitEventReducer from './slices/emitEventSlice';
+import disconnectReducer from './slices/disconnectSlice';
 
 const rootReducer = combineReducers({
   name: nameReducer,
   messages: messagesReducer,
   users: usersReducer,
   isTypingList: isTypingReducer,
-  emitEvent: emitEventReducer
+  emitEvent: emitEventReducer,
+  disconnected: disconnectReducer
 });
 
 // Export type for later type definition.

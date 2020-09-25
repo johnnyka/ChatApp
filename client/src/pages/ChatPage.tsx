@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import useConnectSocket from '../hooks/socket';
 import { NavigationBar, MessageBoard, MessageSubmitForm } from '../components';
 import { RootState } from '../redux/rootReducer';
@@ -8,6 +9,7 @@ import { RootState } from '../redux/rootReducer';
 const ChatPage = (): JSX.Element => {
 
   const messages = useSelector((state: RootState) => state.messages);
+  const isDisconnected = useSelector((state: RootState) => state.disconnected);
 
   useConnectSocket();
  
@@ -17,6 +19,8 @@ const ChatPage = (): JSX.Element => {
         <NavigationBar /> 
         <MessageBoard />
         <MessageSubmitForm />
+        
+        {isDisconnected.bool ? <Redirect to='/' /> : null}
       </>
     )
   };

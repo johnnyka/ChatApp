@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/api/validation', validation);
 
-const inactivityTime: number = 8000;
+const inactivityTime: number = 15*60*1000;
 
 io.on('connect', (socket) => {
   const room = 'Chat room';
@@ -25,7 +25,7 @@ io.on('connect', (socket) => {
   // When a new user joins the chat room...
   socket.on('joinRoom', ({ username }: { username: string }) => {
     console.log('joinRoom, All users:', socket.id, username);
-    logger(username, 'Joined chat');
+    logger(username, 'Joined chat.');
 
     const allUsers = storeUser({ id: socket.id, username });
 
@@ -46,7 +46,12 @@ io.on('connect', (socket) => {
 
     clearTimeout(timer);
     timer = setTimeout(() => {
-      socket.disconnect(true);
+      logger(user.username, 'Disconnected due to inactivity.')
+      socket.disconnect(true); // -> io server disconnect
+                              // Server crash -> transport error
+      socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`))
+      const allUsers = removeUser(socket.id);
+      socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
     }, inactivityTime);
   });
 
@@ -64,7 +69,7 @@ io.on('connect', (socket) => {
 
     const user = getUser(socket.id);
     console.log('disconnect, socket:', socket.id, user.username);
-    logger(user.username, 'Left chat');
+    logger(user.username, 'Left chat.');
     socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`))
     socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: false });
 
