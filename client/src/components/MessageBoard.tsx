@@ -1,14 +1,26 @@
 // eslint-disable-next-line
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import { TMessage } from '../utils/types';
 
 
 const MessageBoard = (): JSX.Element => {
-
+  const messagesEndRef: React.MutableRefObject<HTMLDivElement> = 
+    useRef(document.createElement("div"));
+  
   const name = useSelector((state: RootState) => state.name);
   const messages = useSelector((state: RootState) => state.messages);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth'});
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleMessage = (msg: TMessage): JSX.Element => {
     const { author, time, message } = msg;
@@ -41,6 +53,7 @@ const MessageBoard = (): JSX.Element => {
             {handleMessage(message)}
           </li>
         ))}
+        <div ref={messagesEndRef}></div>
       </ul>
     )
   };
