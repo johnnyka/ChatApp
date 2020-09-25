@@ -23,6 +23,9 @@ const LandingPage = (): JSX.Element => {
       dispatch(updateName(name))
       setRedirect(true);
     }
+    return (() => {
+      setIsValidName(false);
+    });
   }, [isValidName, dispatch, name]);
 
   return (
