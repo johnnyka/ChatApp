@@ -5,14 +5,11 @@ const folderDir: string = path.join(__dirname, '..', '..', 'mock_db');
 const filename = 'log.txt';
 const filepath: string = path.join(folderDir, filename);
 
-export const createLogFolder = () => {
-  fs.mkdir(folderDir, (err) => {
-    if (err) return null; // -> Folder already exist.
-    return null;
-  });
+export const createLogFolder = (): void => {
+  fs.mkdir(folderDir, (_err) => null); // -> if (_err) Folder already exist.
 };
 
-export const logger = (username: string, message: string) => {
+export const logger = (username: string, message: string): void => {
   const dateTime = [
     (new Date()).toLocaleDateString(),
     (new Date()).toLocaleTimeString(),
