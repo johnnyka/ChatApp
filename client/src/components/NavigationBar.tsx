@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showInfoModal } from '../redux/slices/infoModalSlice';
 

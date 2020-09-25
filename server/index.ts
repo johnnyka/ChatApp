@@ -5,11 +5,13 @@ import bodyParser from 'body-parser';
 import validation from './api/validation';
 import { storeUser, getUser, removeUser } from './utils/users';
 import { messageObj } from './utils/messages';
-import logger from './utils/logger';
+import { logger, createLogFolder } from './utils/logger';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+
+createLogFolder();
 
 app.use(bodyParser.json());
 
@@ -37,11 +39,11 @@ io.on('connect', (socket) => {
   });
 
   let timer: NodeJS.Timeout;
+
   // When the user is typing a message...
   socket.on('isTyping', (bool: boolean) => {
     const user = getUser(socket.id);
     console.log('isTyping, socket:', socket.id, user.username);
-
 
     socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: bool });
 
@@ -50,8 +52,7 @@ io.on('connect', (socket) => {
       console.log('inactivity, socket:', socket.id, user.username)
       isInactive = true;
       logger(user.username, 'Disconnected due to inactivity.')
-      socket.disconnect(true); // -> io server disconnect
-      // Server crash -> transport error
+      socket.disconnect(true);
       socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`))
       const allUsers = removeUser(socket.id);
       socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
