@@ -27,6 +27,8 @@ const LandingPage = (): JSX.Element => {
       dispatch(disconnectUser({ bool: false, reason: ''}));
       dispatch(updateName(name));
       setRedirect(true);
+
+      localStorage.setItem('username', name); // Persist name for user returning to chat.
     }
     return (() => {
       setIsValidName(false);

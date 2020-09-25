@@ -1,15 +1,23 @@
 // eslint-disable-next-line
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import useConnectSocket from '../hooks/socket';
 import { NavigationBar, MessageBoard, MessageSubmitForm } from '../components';
 import { RootState } from '../redux/rootReducer';
+import { updateName } from '../redux/slices/nameSlice';
 
 const ChatPage = (): JSX.Element => {
+  const dispatch = useDispatch();
 
   const messages = useSelector((state: RootState) => state.messages);
   const isDisconnected = useSelector((state: RootState) => state.disconnected);
+
+  useEffect(() => {
+    // Persisted name for returning user.
+    const persistedName: string | null = localStorage.getItem('username');
+    if (persistedName) dispatch(updateName(persistedName));
+  }, []);
 
   useConnectSocket();
  
@@ -19,7 +27,7 @@ const ChatPage = (): JSX.Element => {
         <NavigationBar /> 
         <MessageBoard />
         <MessageSubmitForm />
-        
+
         {isDisconnected.bool ? <Redirect to='/' /> : null}
       </>
     )
