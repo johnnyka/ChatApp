@@ -39,13 +39,13 @@ const useConnectSocket = () => {
     })
 
     return () => {
-      if (socketRef.current) socketRef.current.disconnect()
       dispatch(clearMessages(null));
-      dispatch(isTyping(false))
+      dispatch(isTyping(false));
+      if (socketRef.current) socketRef.current.disconnect()
     }
   }, [dispatch, name]);
 
-  const emitEvent = (event: string, value: string | boolean):  SocketIOClient.Socket | undefined => {
+  const emitEvent = (event: string, value: string | boolean): SocketIOClient.Socket | undefined => {
     return socketRef.current?.emit(event, value);
   };
 

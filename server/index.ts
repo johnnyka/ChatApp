@@ -56,6 +56,7 @@ io.on('connect', (socket) => {
     const user = getUser(socket.id);
     logger(user.username, 'Left chat');
     socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`))
+    socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: false });
 
     const allUsers = removeUser(socket.id);
     socket.broadcast.to(room).emit('chatInfo', { users: allUsers })
