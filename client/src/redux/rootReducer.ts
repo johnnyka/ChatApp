@@ -6,6 +6,7 @@ import isTypingReducer from './slices/isTypingSlice';
 import emitEventReducer from './slices/emitEventSlice';
 import disconnectReducer from './slices/disconnectSlice';
 import infoModalReducer from './slices/infoModalSlice';
+import msgsWithHideLabelsReducer from './slices/msgsWithHideLabelsSlice';
 
 const rootReducer = combineReducers({
   name: nameReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   isTypingList: isTypingReducer,
   emitEvent: emitEventReducer,
   disconnected: disconnectReducer,
-  infoModalVisibility: infoModalReducer
+  infoModalVisibility: infoModalReducer,
+  msgsWithHideLabels: msgsWithHideLabelsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>

@@ -1,21 +1,16 @@
 .msgBoard {
-  /* background-color: salmon; */
   height: calc(100vh - 3.5rem - 4rem);
   padding: 0.8rem;
   overflow-y: auto;
 }
 
 .msgBoard__msgList {
-  /* background-color: burlywood; */
 }
 
 .msgList__msgItem {
-  /* background-color: skyblue; */
-  /* margin: 0.5rem 0; */
 }
 
 .botMsg {
-  /* background-color: red; */
   font-size: 0.7rem;
   text-align: center;
   margin-bottom: 0.2rem;
@@ -25,8 +20,11 @@
   margin-top: 0.5rem;
 }
 
+.userMsg + .botMsg {
+  margin-top: 0.5rem;
+}
+
 .userMsg {
-  margin-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -40,27 +38,24 @@
 }
 
 .msgItem__labels {
-  /* background-color: teal; */
   display: flex;
   margin-bottom: 0.2rem;
 }
 
 .receivedMsg .labels__author {
-  /* background-color: rgb(255, 136, 0); */
   font-size: 0.9rem;
   font-weight: 700;
   padding-left: 0.5rem;
-  margin-right: 0.4rem;
   align-self: baseline;
   color: rgb(0, 0, 0);
 }
 
 .labels__time {
-  /* background-color: violet; */
   font-size: 0.8rem;
   color: rgb(88, 88, 88);
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
   align-self: baseline;
+  margin-top: 0.5rem;
 }
 
 .userMsg .msgItem__msg {
@@ -76,7 +71,9 @@
 }
 
 .receivedMsg .msgItem__msg {
-  /* background-color: rgb(89, 179, 94); */
   background-color: rgb(124, 124, 124);
 }
 
+.hide {
+  display: none;
+}

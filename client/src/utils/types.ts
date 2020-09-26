@@ -9,12 +9,17 @@ export type TIsTypingObj = {
   isTyping: boolean
 };
 
-export type TIsDisconnected = { 
+export type TIsDisconnected = {
   bool: boolean,
   reason: string
 };
 
-export type TEmitEvent = { 
-  event: string | null, 
-  value: string | boolean 
+export type TEmitEvent = {
+  event: string | null,
+  value: string | boolean
 };
+
+export interface IMsgWithHideLabels extends TMessage {
+  authorLabel: string,
+  timeLabel: string
+}

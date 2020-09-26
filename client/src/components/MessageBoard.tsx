@@ -1,16 +1,19 @@
 // eslint-disable-next-line
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
-import { TMessage } from '../utils/types';
+import { IMsgWithHideLabels } from '../utils/types';
+import { addHideMsgLabels } from '../redux/slices/msgsWithHideLabelsSlice';
 import '../styling/MessageBoard.css';
 
 const MessageBoard = (): JSX.Element => {
+  const dispatch = useDispatch();
   const messagesEndRef: React.MutableRefObject<HTMLDivElement> =
     useRef(document.createElement("div"));
 
   const name = useSelector((state: RootState) => state.name);
   const messages = useSelector((state: RootState) => state.messages);
+  const msgsWithHideLabels = useSelector((state: RootState) => state.msgsWithHideLabels);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -19,19 +22,21 @@ const MessageBoard = (): JSX.Element => {
   };
 
   useEffect(() => {
+    dispatch(addHideMsgLabels(messages))
+
     scrollToBottom();
   }, [messages]);
 
-  const handleMessage = (msg: TMessage): JSX.Element => {
-    const { author, time, message } = msg;
+  const handleMessage = (msg: IMsgWithHideLabels): JSX.Element => {
+    const { author, time, message, authorLabel, timeLabel } = msg;
     const from = author === name ? '' : author;
 
     return (
       <>
         {author === 'ChatBot' ? null : (
           <div className='msgItem__labels'>
-            <span className='labels__author'>{from}</span>
-            <span className='labels__time'>{time}</span>
+            <span className={`labels__author ${authorLabel}`}>{from}</span>
+            <span className={`labels__time ${timeLabel}`}>{time}</span>
           </div>
         )}
         <div className='msgItem__msg'>{message}</div>
@@ -57,7 +62,7 @@ const MessageBoard = (): JSX.Element => {
 
     return (
       <ul className='msgBoard__msgList'>
-        {messages.map((message, i) => (
+        {msgsWithHideLabels.map((message, i) => (
           <li key={i} className={`msgList__msgItem  
             ${identifyMsgType(message.author)}`}
           >
@@ -68,7 +73,7 @@ const MessageBoard = (): JSX.Element => {
       </ul>
     )
   };
-
+  
   return (
     <section className='msgBoard'>
       {renderMessages()}
