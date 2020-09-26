@@ -40,12 +40,26 @@ const MessageBoard = (): JSX.Element => {
   };
 
   const renderMessages = (): JSX.Element => {
+
+    const identifyMsgType = (author: string): string => {
+      switch (author) {
+        case name: {
+          return 'sentMsg userMsg';
+        }
+        case 'ChatBot': {
+          return 'botMsg';
+        }
+        default: {
+          return 'receivedMsg userMsg';
+        }
+      }
+    };
+
     return (
       <ul className='msgBoard__msgList'>
         {messages.map((message, i) => (
-          <li key={i}
-            className={`msgList__msgItem  
-            ${name === message.author ? 'sentMsg' : 'receivedMsg'}`}
+          <li key={i} className={`msgList__msgItem  
+            ${identifyMsgType(message.author)}`}
           >
             {handleMessage(message)}
           </li>

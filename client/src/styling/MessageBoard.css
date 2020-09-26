@@ -1,27 +1,82 @@
 .msgBoard {
-  background-color: salmon;
+  /* background-color: salmon; */
+  height: calc(100vh - 3.5rem - 4rem);
+  padding: 0.8rem;
+  overflow-y: auto;
 }
 
 .msgBoard__msgList {
-
+  /* background-color: burlywood; */
 }
 
 .msgList__msgItem {
+  /* background-color: skyblue; */
+  /* margin: 0.5rem 0; */
+}
 
+.botMsg {
+  /* background-color: red; */
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.botMsg + .userMsg {
+  margin-top: 0.5rem;
+}
+
+.userMsg {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sentMsg {
+  align-items: flex-end;
+}
+
+.receivedMsg {
+  align-items: flex-start;
 }
 
 .msgItem__labels {
-
+  /* background-color: teal; */
+  display: flex;
+  margin-bottom: 0.2rem;
 }
 
-.labels__author {
-
+.receivedMsg .labels__author {
+  /* background-color: rgb(255, 136, 0); */
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-left: 0.5rem;
+  margin-right: 0.4rem;
+  align-self: baseline;
+  color: rgb(0, 0, 0);
 }
 
 .labels__time {
-
+  /* background-color: violet; */
+  font-size: 0.8rem;
+  color: rgb(88, 88, 88);
+  padding-right: 0.5rem;
+  align-self: baseline;
 }
 
-.msgItem__msg {
-
+.userMsg .msgItem__msg {
+  width: 70vw;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-size: 1rem;
 }
+
+.sentMsg .msgItem__msg {
+  background-color: rgb(67, 80, 255);
+}
+
+.receivedMsg .msgItem__msg {
+  /* background-color: rgb(89, 179, 94); */
+  background-color: rgb(124, 124, 124);
+}
+

@@ -33,7 +33,7 @@ io.on('connect', (socket) => {
     const allUsers = storeUser({ id: socket.id, username });
 
     socket.join(room);
-    socket.emit('message', messageObj(botName, `Welcome to ${room}, ${username}. Say 👋 \u00A0 to your friends!`));
+    socket.emit('message', messageObj(botName, `Welcome to ${room}, ${username}. Say 👋  to your friends!`));
     socket.broadcast.to(room).emit('message', messageObj(botName, `${username} joined the chat.`));
     io.to(room).emit('chatInfo', { users: allUsers });
   });
