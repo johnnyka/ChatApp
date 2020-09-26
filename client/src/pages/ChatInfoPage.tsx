@@ -3,38 +3,48 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import { hideInfoModal } from '../redux/slices/infoModalSlice';
+import '../styling/ChatInfoPage.css';
 
 const ChatInfoPage = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const users = useSelector((state: RootState) => state.users);
 
-  const hideInfo = () => {
+  const closeModal = () => {
     dispatch(hideInfoModal());
   };
 
   const renderUsers = (): JSX.Element => {
     return (
-      <section>
-        <ul className='chatInfo__usersList'>
+      <section className='chatInfo__userInfo'>
+        <h2 className='userInfo__header'>
+          <i className='userInfo__icon fas fa-user-friends'></i>
+          Users
+        </h2>
+        <ul className='userInfo__userList'>
           {users.map((user, i) => (
-            <li
-              key={i}
-              className='usersList__userItem'
-            >
+            <li key={i} className='usersList__userItem'>
               {user}
             </li>
           ))}
         </ul>
-        <button type='button' onClick={() => hideInfo()}>Close</button>
       </section>
     );
   };
 
   return (
     <section className='chatInfo'>
-      <div>This is the Chat info page</div>
-      {renderUsers()}
+      <div className='chatInfo__modal'>
+        <h1 className='chatInfo__header'>
+          <i className='header__info_icon fas fa-info-circle'></i>
+        </h1>
+        {renderUsers()}
+        <button type='button' className='modal__close_btn'
+          onClick={() => closeModal()}
+        >
+          <i className='close_btn__icon fas fa-times-circle'></i>
+        </button>
+      </div>
     </section>
   );
 };

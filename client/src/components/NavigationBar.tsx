@@ -13,7 +13,7 @@ const NavigationBar = (): JSX.Element => {
     history.goBack();
   };
 
-  const showInfo = () => {
+  const openModal = () => {
     dispatch(showInfoModal());
   };
 
@@ -23,7 +23,7 @@ const NavigationBar = (): JSX.Element => {
         <i className="navBar__icons fas fa-chevron-left"></i>
       </button>
       <p className='navBar__header'>Chat room</p>
-      <button className='navBar__btns' type='button' onClick={() => showInfo()}>
+      <button className='navBar__btns' type='button' onClick={() => openModal()}>
         <i className="navBar__icons icons__info fas fa-info-circle"></i>
       </button>
     </section>

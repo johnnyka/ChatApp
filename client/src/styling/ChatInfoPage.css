@@ -1,0 +1,81 @@
+.chatInfo {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chatInfo__modal {
+  background-color: whitesmoke;
+  width: 80vw;
+  height: 90vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 2px 5px black;
+}
+
+.modal__close_btn {
+  position: absolute;
+  bottom: 10vh;
+  background-color: transparent;
+  border: none;
+}
+
+.close_btn__icon {
+  font-size: 3rem;
+  color: rgb(255, 64, 64);
+}
+
+.chatInfo__header {
+  margin: 1rem;
+}
+
+.header__info_icon {
+  font-size: 2rem;
+  color: rgb(175, 175, 175);
+}
+
+.chatInfo__userInfo {
+  /* background-color: grey; */
+  /* padding: 0 1rem; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userInfo__icon {
+  color: rgba(255, 255, 255, 0.397);
+  margin-right: 0.5rem;
+}
+
+.userInfo__header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  /* background-color: rgb(67, 80, 255); */
+  background-image: linear-gradient(90deg, rgb(10, 65, 247), rgb(99, 34, 252));
+  width: 100%;
+  /* align-self: center; */
+  text-align: center;
+  color: white;
+}
+
+.userInfo__userList {
+  /* background-color: salmon; */
+  width: 100%;
+  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
+}
+
+.usersList__userItem{
+  padding: 0.1rem 0;
+}
+
