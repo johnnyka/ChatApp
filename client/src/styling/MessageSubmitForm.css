@@ -1,6 +1,6 @@
 .msgSubmitSection {
-  /* background-color: slateblue; */
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(226, 207, 164);
+  /* background-color: rgb(59, 59, 59); */
   height: 4rem;
   position: absolute;
   bottom: 0;
@@ -11,25 +11,23 @@
   flex-direction: row;
   width: 100vw;
   padding: 0.5rem 0 0;
-  /* background-color: steelblue; */
 }
 
 .msgSubmitForm__input {
-  width: -webkit-calc(100% - 2.7rem);
-  width: -moz-calc(100% - 2.7rem);
-  width: calc(100% - 2.7rem);
-  height: 20px;
-  padding: 0.5rem 0.8rem;
+  width: -webkit-calc(100% - 2.6rem);
+  width: -moz-calc(100% - 2.6rem);
+  width: calc(100% - 2.6rem);
+  height: 2.2rem;
+  padding: 0.6rem 0.8rem 0.4rem;
   margin: 0 0.5rem;
   font-size: 1rem;
   outline: none;
   border-radius: 10px;
-  /* border: 1px solid black; */
   border: none;
 }
 
 .msgSubmitForm__send_btn {
-  width: 2.7rem;
+  width: 2.6rem;
   margin-right: 0.5rem;
   background-color: rgb(35, 86, 255);
   border: none;
@@ -40,11 +38,11 @@
 .msgSubmitForm__send_icon {
   font-size: 1.2rem;
   color: rgb(255, 255, 255);
+  padding-right: 0.1rem;
 }
 
 .msgSubmitSection__status {
-  /* background-color: rgb(77, 255, 77); */
   font-size: 0.7rem;
   padding: 0.2rem 0.5rem 0.5rem 1rem;
-  color: whitesmoke;
+  color: rgb(20, 20, 20);
 }

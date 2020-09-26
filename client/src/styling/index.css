@@ -1,1 +1,3 @@
-/* Some styling... */
+* {
+  box-sizing: border-box;
+}
