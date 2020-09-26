@@ -22,13 +22,15 @@ const ChatPage = (): JSX.Element => {
   }, []);
 
   useConnectSocket();
- 
+
   const renderChat = (): JSX.Element => {
     return (
       <>
-        <NavigationBar /> 
-        <MessageBoard />
-        <MessageSubmitForm />
+        <section className='chatPage'>
+          <NavigationBar />
+          <MessageBoard />
+          <MessageSubmitForm />
+        </section>
 
         {infoModal ? <ChatInfoPage /> : null}
         {isDisconnected.bool ? <Redirect to='/' /> : null}
@@ -36,7 +38,7 @@ const ChatPage = (): JSX.Element => {
     )
   };
   return (
-    <>      
+    <>
       {messages.length ? renderChat() : <div>Loading...</div>}
     </>
   );

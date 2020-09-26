@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import { sendMessage, isTyping } from '../redux/slices/emitEventSlice';
+import '../styling/MessageSubmitForm.css';
 
 const MessageSubmitForm = (): JSX.Element => {
 
@@ -12,9 +13,9 @@ const MessageSubmitForm = (): JSX.Element => {
 
   const isTypingUsers = useSelector((state: RootState) => state.isTypingList);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLTextAreaElement>): void => {
     event.preventDefault();
-    
+
     if (myMsg) {
       dispatch(sendMessage(myMsg));
       setMyMsg('');
@@ -36,20 +37,24 @@ const MessageSubmitForm = (): JSX.Element => {
   };
 
   return (
-    <section>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type='text'
+    <section className='msgSubmitSection'>
+      <form className='msgSubmitSection__msgSubmitForm' onSubmit={(e) => handleSubmit(e)}>
+        <textarea
+          className='msgSubmitForm__input'
           name='myMsg'
           value={myMsg}
           onChange={(e) => setMyMsg(e.target.value)}
           autoFocus={true}
           placeholder='Message'
-          autoComplete="off"
-        />
-        <input type='submit' value='Submit' />
+          onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }}
+          autoCapitalize='on' // Only for virtual keyboards (mobile).
+        >
+        </textarea>
+        <button className='msgSubmitForm__send_btn' type='submit'>
+          <i className="msgSubmitForm__send_icon fas fa-paper-plane"></i>
+        </button>
       </form>
-      <div>
+      <div className='msgSubmitSection__status'>
         {!!isTypingUsers.length ? renderIsTypingUser() : null}
       </div>
     </section>
