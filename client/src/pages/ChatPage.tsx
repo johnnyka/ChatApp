@@ -36,9 +36,7 @@ const ChatPage = (): JSX.Element => {
     )
   };
   return (
-    <>
-      <div>This is the chat page.</div>
-      
+    <>      
       {messages.length ? renderChat() : <div>Loading...</div>}
     </>
   );

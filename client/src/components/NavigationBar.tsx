@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showInfoModal } from '../redux/slices/infoModalSlice';
+import '../styling/NavigationBar.css';
 
 const NavigationBar = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -17,10 +18,14 @@ const NavigationBar = (): JSX.Element => {
   };
 
   return (
-    <section>
-      <button type='button' onClick={() => leaveChat()}>Leave chat</button>
-      <p>Chat room</p>
-      <button type='button' onClick={() => showInfo()}>Info</button>
+    <section className='navBar'>
+      <button className='navBar__btns' type='button' onClick={() => leaveChat()}>
+        <i className="navBar__icons fas fa-chevron-left"></i>
+      </button>
+      <p className='navBar__header'>Chat room</p>
+      <button className='navBar__btns' type='button' onClick={() => showInfo()}>
+        <i className="navBar__icons icons__info fas fa-info-circle"></i>
+      </button>
     </section>
   );
 };

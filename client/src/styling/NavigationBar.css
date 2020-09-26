@@ -1,0 +1,30 @@
+.navBar {
+  background-image: linear-gradient(90deg, rgb(10, 65, 247), rgb(99, 34, 252));
+  padding: 0rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBar__header {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navBar__btns {
+  background-color: transparent;
+  border: transparent;
+  width: 3rem;
+  height: 3rem;
+  outline: none;
+}
+
+.navBar__icons {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.822);
+}
+
+.icons__info {
+  padding-right: 1rem;
+}
