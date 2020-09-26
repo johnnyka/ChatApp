@@ -45,6 +45,7 @@ const MessageSubmitForm = (): JSX.Element => {
           onChange={(e) => setMyMsg(e.target.value)}
           autoFocus={true}
           placeholder='Message'
+          autoComplete="off"
         />
         <input type='submit' value='Submit' />
       </form>

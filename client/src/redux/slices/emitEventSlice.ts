@@ -11,7 +11,6 @@ const emitEventSlice = createSlice({
       return { event: 'message', value: action.payload };
     },
     isTyping(_state, action: PayloadAction<boolean>) {
-      console.log('isTyping action:', action.payload)
       return { event: 'isTyping', value: action.payload };
     }
   }

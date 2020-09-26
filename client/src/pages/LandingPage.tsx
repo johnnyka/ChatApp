@@ -6,6 +6,7 @@ import { updateName } from '../redux/slices/nameSlice';
 import { validateName } from '../utils/validation';
 import { RootState } from '../redux/rootReducer';
 import { disconnectUser } from '../redux/slices/disconnectSlice';
+import '../styling/LandingPage.css';
 
 const LandingPage = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const LandingPage = (): JSX.Element => {
 
   useEffect(() => {
     if (isValidName) {
-      dispatch(disconnectUser({ bool: false, reason: ''}));
+      dispatch(disconnectUser({ bool: false, reason: '' }));
       dispatch(updateName(name));
       setRedirect(true);
 
@@ -37,25 +38,33 @@ const LandingPage = (): JSX.Element => {
 
   return (
     <>
-      <div>This is the landing page.</div>
-      
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Name:
-          <input
-            type='text'
-            name='name'
-            value={name}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-            autoFocus={true}
-            placeholder='Username'
-          />
-        </label>
-        <input type='submit' value='Submit' />
-        <div>{validationMsg}</div>
-      </form>
+      <div className='container'>
+        <section className='landing'>
+          <i className="landing__icon far fa-comments"></i>
+          <div className='landing__header'>Welcome to myChat</div>
 
-      {isDisconnected.bool ? console.log(`You were disconnected due to ${isDisconnected.reason}.`) : null }
+          <form className='landing__name_form' onSubmit={(e) => handleSubmit(e)}>
+            <input
+              className='name_form__input'
+              type='text'
+              name='name'
+              value={name}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+              autoFocus={true}
+              placeholder='Username'
+              autoComplete='off'
+            />
+            <input
+              className='name_form__submit_btn'
+              type='submit'
+              value='Join chat'
+            />
+          </form>
+          <div className='name_form__feedback'>{validationMsg}</div>
+        </section>
+      </div>
+
+      {isDisconnected.bool ? console.log(`You were disconnected due to ${isDisconnected.reason}.`) : null}
       {redirect ? <Redirect push to='/chatroom' /> : null}
     </>
   );
