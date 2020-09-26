@@ -40,7 +40,9 @@ const LandingPage = (): JSX.Element => {
     <>
       <div className='container'>
         <section className='landing'>
-          <i className="landing__icon far fa-comments"></i>
+          <div className='landing__icon_container'>
+            <i className="landing__icon far fa-comments"></i>
+          </div>
           <div className='landing__header'>Welcome to myChat</div>
 
           <form className='landing__name_form' onSubmit={(e) => handleSubmit(e)}>
