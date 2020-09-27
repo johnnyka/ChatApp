@@ -39,7 +39,7 @@ npm run start
 ```
 
 The rest should be quite self explanatory. Below are some images for inspiration. Enjoy 😄
-![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage_server_unavailable.png) ![LandingPage_name_taken.png](/Pics/LandingPage_name_taken.png)
+![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage_server_unavailable.png)
 ![ChatPage_1.png](/Pics/ChatPage_1.png) ![ChatPage_2.png](/Pics/ChatPage_2.png) ![ChatInfoPage.png](/Pics/ChatInfoPage.png)
 ![LandingPage_disconnected_inactivity.png](/Pics/LandingPage_disconnected_inactivity.png)
 
