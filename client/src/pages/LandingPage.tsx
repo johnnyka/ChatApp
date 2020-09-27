@@ -24,6 +24,10 @@ const LandingPage = (): JSX.Element => {
   };
 
   useEffect(() => {
+    if (isDisconnected.bool) setValidationMsg(`You were disconnected due to ${isDisconnected.reason}.`)
+  }, [isDisconnected]);
+
+  useEffect(() => {
     if (isValidName) {
       dispatch(disconnectUser({ bool: false, reason: '' }));
       dispatch(updateName(name));
