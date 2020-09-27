@@ -13,7 +13,9 @@ const MessageSubmitForm = (): JSX.Element => {
 
   const isTypingUsers = useSelector((state: RootState) => state.isTypingList);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLTextAreaElement>): void => {
+  const handleSubmit = (event: 
+    React.FormEvent<HTMLFormElement> |
+    React.KeyboardEvent<HTMLTextAreaElement>): void => {
     event.preventDefault();
 
     if (myMsg) {

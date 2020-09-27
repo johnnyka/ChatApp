@@ -25,7 +25,7 @@ const MessageBoard = (): JSX.Element => {
     dispatch(addHideMsgLabels(messages))
 
     scrollToBottom();
-  }, [messages]);
+  }, [messages, dispatch]);
 
   const handleMessage = (msg: IMsgWithHideLabels): JSX.Element => {
     const { author, time, message, authorLabel, timeLabel } = msg;

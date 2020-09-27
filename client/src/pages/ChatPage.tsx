@@ -19,7 +19,7 @@ const ChatPage = (): JSX.Element => {
     // Get persisted name for returning user.
     const persistedName: string | null = localStorage.getItem('username');
     if (persistedName) dispatch(updateName(persistedName));
-  }, []);
+  }, [dispatch]);
 
   useConnectSocket();
 
@@ -39,7 +39,8 @@ const ChatPage = (): JSX.Element => {
   };
   return (
     <>
-      {messages.length ? renderChat() : <div>Loading...</div>}
+      {/* TODO: Fix nicer loader. */}
+      {messages.length ? renderChat() : <div>Loading...</div>} 
     </>
   );
 };
