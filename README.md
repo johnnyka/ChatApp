@@ -9,7 +9,7 @@ A fullstack chat application using Socket.io, Node.js, Express, React, Redux, Ty
 
 ## Description
 This task was given by [&lt;/salt>](https://salt.study/) as a coding test.
-The instrucitons were to build a chat application where multiple users can login and send/receive messages simultaneously. Simple error handling and user feedback messages have been included, and all the activities and messages are logged in ```server/mock_db/log.txt```.
+The instrucitons were to build a chat application where multiple users can login and send/receive messages simultaneously. Simple error handling and user feedback messages have been included, and all the activities and messages are logged in ```server/mock_db/log.txt```. Users will also be disconnected and redirected to the landing page upon a certain inactivity time, which is set to 15 minutes.
 
 ## Technologies used
 * <a href="https://socket.io/" title="SocketIO"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/socket.io.svg" alt="SocketIO" width="30px" height="30px"></img> Socket.io</a>
@@ -39,8 +39,9 @@ npm run start
 ```
 
 The rest should be quite self explanatory. Below are some images for inspiration. Enjoy 😄
-![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage server unavailable.png) ![LandingPage_name_taken.png](/Pics/LandingPage name taken.png) ![LandingPage_disconnected_inactivity.png](/Pics/LandingPage disconnected inactivity.png)
+![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage_server_unavailable.png) ![LandingPage_name_taken.png](/Pics/LandingPage_name_taken.png)
 ![ChatPage_1.png](/Pics/ChatPage_1.png) ![ChatPage_2.png](/Pics/ChatPage_2.png) ![ChatInfoPage.png](/Pics/ChatInfoPage.png)
+![LandingPage_disconnected_inactivity.png](/Pics/LandingPage_disconnected_inactivity.png)
 
 ## Future developments/improvements
 * Currently developed with mobile first. Need to add responsive styling for tablets and desktop.
