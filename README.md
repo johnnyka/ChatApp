@@ -38,14 +38,9 @@ npm install
 npm run start
 ```
 
-The rest should be quite self explanatory. Below are some images for inspiration. Enjoy 😄!
-![LandingPage.png](/Pics/LandingPage.png)
-![LandingPage_server_unavailable.png](/Pics/LandingPage server unavailable.png)
-![LandingPage_name_taken.png](/Pics/LandingPage name taken.png)
-![LandingPage_disconnected_inactivity.png](/Pics/LandingPage disconnected inactivity.png)
-![ChatPage_1.png](/Pics/ChatPage_1.png)
-![ChatPage_2.png](/Pics/ChatPage_2.png)
-![ChatInfoPage.png](/Pics/ChatInfoPage.png)
+The rest should be quite self explanatory. Below are some images for inspiration. Enjoy 😄
+![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage server unavailable.png) ![LandingPage_name_taken.png](/Pics/LandingPage name taken.png) ![LandingPage_disconnected_inactivity.png](/Pics/LandingPage disconnected inactivity.png)
+![ChatPage_1.png](/Pics/ChatPage_1.png) ![ChatPage_2.png](/Pics/ChatPage_2.png) ![ChatInfoPage.png](/Pics/ChatInfoPage.png)
 
 ## Future developments/improvements
 * Currently developed with mobile first. Need to add responsive styling for tablets and desktop.
