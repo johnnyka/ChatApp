@@ -12,17 +12,19 @@ const socketServer = (server: http.Server): socketio.Server => {
     const room = 'Chat room';
     const botName = 'ChatBot';
 
+    let name: string;
     let isInactive = false;
 
     // When a new user joins the chat room...
     socket.on('joinRoom', ({ username }: { username: string }) => {
-      logger(username, 'Joined chat.');
+      name = username;
+      logger(name, 'Joined chat.');
 
-      const allUsers = storeUser({ id: socket.id, username });
+      const allUsers = storeUser({ id: socket.id, username: name });
 
       socket.join(room);
-      socket.emit('message', messageObj(botName, `Welcome to ${room}, ${username}. Say 👋\u00A0 to your friends!`));
-      socket.broadcast.to(room).emit('message', messageObj(botName, `${username} joined the chat.`));
+      socket.emit('message', messageObj(botName, `Welcome to ${room}, ${name}. Say 👋\u00A0 to your friends!`));
+      socket.broadcast.to(room).emit('message', messageObj(botName, `${name} joined the chat.`));
       io.to(room).emit('chatInfo', { users: allUsers });
     });
 
@@ -30,16 +32,15 @@ const socketServer = (server: http.Server): socketio.Server => {
 
     // When the user is typing a message...
     socket.on('isTyping', (bool: boolean) => {
-      const user = getUser(socket.id);
 
-      socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: bool });
+      socket.broadcast.to(room).emit('isTyping', { user: name, isTyping: bool });
 
       clearTimeout(timer);
       timer = setTimeout(() => {
         isInactive = true;
-        logger(user.username, 'Disconnected due to inactivity.');
+        logger(name, 'Disconnected due to inactivity.');
         socket.disconnect(true);
-        socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} was disconnected due to inactivity.`));
+        socket.broadcast.to(room).emit('message', messageObj(botName, `${name} was disconnected due to inactivity.`));
         const allUsers = removeUser(socket.id);
         socket.broadcast.to(room).emit('chatInfo', { users: allUsers });
       }, inactivityTime);
@@ -47,17 +48,16 @@ const socketServer = (server: http.Server): socketio.Server => {
 
     // When a new message is received...
     socket.on('message', (msg: string) => {
-      const user = getUser(socket.id);
-      logger(user.username, msg);
-      io.to(room).emit('message', messageObj(user.username, msg));
+      logger(name, msg);
+      io.to(room).emit('message', messageObj(name, msg));
     });
 
     // When user disconnects...
     socket.on('disconnect', () => {
-      const user = getUser(socket.id);
-      logger(user.username, 'Left chat.');
-      if (!isInactive) socket.broadcast.to(room).emit('message', messageObj(botName, `${user.username} left the chat.`));
-      socket.broadcast.to(room).emit('isTyping', { user: user.username, isTyping: false });
+      // console.log('NAME', name)
+      logger(name, 'Left chat.');
+      if (!isInactive) socket.broadcast.to(room).emit('message', messageObj(botName, `${name} left the chat.`));
+      socket.broadcast.to(room).emit('isTyping', { user: name, isTyping: false });
 
       const allUsers = removeUser(socket.id);
       socket.broadcast.to(room).emit('chatInfo', { users: allUsers });
