@@ -4,10 +4,27 @@
   overflow-y: auto;
 }
 
+/* Auto scroll to bottom.
+Otherwise fixed view (for user to read old messages).
+Only flaw is that the user needs to scroll once to the 
+bottom of the list. Was not fully able to fix this in JS. */
+.msgBoard__msgList * {
+  overflow-anchor: none;
+}
+.msgList__end {
+  overflow-anchor: auto;
+  height: 1px;
+}
+/* ------------------------------------------------ */
+
 .msgBoard__msgList {
 }
 
+
 .msgList__msgItem {
+}
+
+.msgItem__msg{
 }
 
 .botMsg {

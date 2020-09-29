@@ -1,10 +1,12 @@
 // eslint-disable-next-line
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, createRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import { IMsgWithHideLabels } from '../utils/types';
 import { addHideMsgLabels } from '../redux/slices/msgsWithHideLabelsSlice';
 import '../styling/MessageBoard.css';
+
+let scroll = true;
 
 const MessageBoard = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -14,18 +16,26 @@ const MessageBoard = (): JSX.Element => {
   const name = useSelector((state: RootState) => state.name);
   const messages = useSelector((state: RootState) => state.messages);
   const msgsWithHideLabels = useSelector((state: RootState) => state.msgsWithHideLabels);
-
-  const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const messageListRef: React.MutableRefObject<HTMLUListElement> = useRef(document.createElement("ul"));
+  const msgBoardSectionRef: React.MutableRefObject<HTMLElement> = useRef(document.createElement("section"));
 
   useEffect(() => {
     dispatch(addHideMsgLabels(messages))
-
-    scrollToBottom();
+    
+    activateAutoScroll();
   }, [messages, dispatch]);
+
+  // BUG: Lagging. One message will not be visible before scrolled to bottom.
+  const activateAutoScroll = () => {
+    const listHeight = messageListRef.current.scrollHeight;
+    const sectionHeight = msgBoardSectionRef.current.clientHeight;
+
+    if (listHeight > sectionHeight && scroll) {
+      scroll = false;
+      // Scroll large value to ensure scrolled to bottom.
+      msgBoardSectionRef.current.scrollTop = 1000; 
+    }
+  };
 
   const handleMessage = (msg: IMsgWithHideLabels): JSX.Element => {
     const { author, time, message, authorLabel, timeLabel } = msg;
@@ -61,21 +71,21 @@ const MessageBoard = (): JSX.Element => {
     };
 
     return (
-      <ul className='msgBoard__msgList'>
+      <ul className='msgBoard__msgList' ref={messageListRef}>
         {msgsWithHideLabels.map((message, i) => (
           <li key={i} className={`msgList__msgItem  
             ${identifyMsgType(message.author)}`}
           >
             {handleMessage(message)}
-          </li>
-        ))}
-        <div ref={messagesEndRef}></div>
+          </li>)
+        )}
+        <div className='msgList__end' ref={messagesEndRef}></div>
       </ul>
     )
   };
-  
+
   return (
-    <section className='msgBoard'>
+    <section className='msgBoard' ref={msgBoardSectionRef} >
       {renderMessages()}
     </section>
   );
