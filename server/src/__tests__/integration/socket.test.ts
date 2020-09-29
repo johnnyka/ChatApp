@@ -4,59 +4,93 @@ import socketio from 'socket.io';
 import io from 'socket.io-client';
 import http from 'http';
 import socketServer from '../../socket/socketServer';
+import { TMessage } from '../../utils/types';
 
 const PORT = 3000;
-// const socketUrl = `http://localhost:${PORT}`;
 const app = express();
 
-describe('Socket', () => {
+let httpServer: http.Server;
+let ioServer: socketio.Server;
+let socket1: SocketIOClient.Socket;
+let socket2: SocketIOClient.Socket;
 
-  let httpServer: http.Server;
-  let ioServer: socketio.Server;
-  let socket: SocketIOClient.Socket;
+const testName1: string = 'JohnDoe';
+const testName2: string = 'SaraSmith';
 
-  beforeEach((done: Function) => {
-    httpServer = http.createServer(app);      // Http server
-    // ioServer = socketio(httpServer);          // socket.io server
-    ioServer = socketServer(httpServer);          // socket.io server
-    httpServer.listen(PORT);
+beforeAll((done: Function) => {
+  httpServer = http.createServer(app);      // Http server
+  ioServer = socketServer(httpServer);      // socket.io server
+  httpServer.listen(PORT);
 
-    socket = io(`http://localhost:${PORT}`);  // Socket
-    socket.on('connect', () => {
-      done();                                 // Await socket to be connected.
-    });
+  socket1 = io(`http://localhost:${PORT}`); // Socket
+  socket2 = io(`http://localhost:${PORT}`);
+  socket1.on('connect', () => {
   });
-
-  afterEach((done: Function) => {
-    // Cleanup
-    ioServer.close();
-    httpServer.close();
-    socket.disconnect();
-    done();
+  socket2.on('connect', () => {
+    done();                                 // Await socket to be connected.
   });
+});
 
-  it.only('Should communicate', (done: Function) => {
-    // socket.emit('joinRoom', { username: 'JohnDoe' });
+afterAll((done: Function) => {
+  // Cleanup
+  ioServer.close();
+  httpServer.close();
+  socket1.close();
+  socket2.close();
+  done();
+});
+
+describe('Socket configuration...', () => {
+  it('Should communicate', (done: Function) => {
+
     ioServer.emit('hello', 'Hello Client!');
-    socket.on('hello', (message: string) => {
+    socket1.once('hello', (message: string) => {
       assert.equal(message, 'Hello Client!');
       done();
     });
-    // ioServer.on('connection', (mySocket) => {
-    //   console.log('mySOCKET:', mySocket);
-    // });
   });
 
-  // Doesn't work...
-  // it('Should respond correctly on message event', (done: Function) => {
-  //   console.log(socket.connected);
-  //   socket.emit('joinRoom', { username: 'JohnDoe' })
-  //   ioServer.emit('message', 'Welcome JohnDoe')
-  //   socket.emit('message', 'Testing 1, 2 ,3...');
-  //   ioServer.on('message', (msg: string) => {
-  //     console.log('TESTING:', msg);
-  //     assert.equal(msg, 'Testing 1, 2 ,3...');
-  //     done();
-  //   });
-  // });
+  it('Should give welcome response upon joinRoom event', (done: Function) => {
+    const author: string = 'ChatBot';
+    const time: string = (new Date()).toLocaleTimeString().slice(0, 5);
+
+    socket1.emit('joinRoom', { username: testName1 });
+    socket1.once('message', (msg: TMessage) => {
+      assert.equal(msg.author, author);
+      assert.equal(msg.time, time);
+      assert.match(msg.message, new RegExp(testName1));
+      assert.notMatch(msg.message, new RegExp(`${testName1}_2`));
+      done();
+    });
+  });
+
+  it('Should broadcast user joined chat', (done: Function) => {
+    socket1.emit('joinRoom', { username: testName1 });
+    // Wait for ioServer to finish emit/broadcast.
+    setTimeout(() => {
+      // Now let the 2nd user join.
+      socket2.emit('joinRoom', { username: testName2 });
+      socket1.once('message', (msg: TMessage) => {
+        assert.equal(msg.message, `${testName2} joined the chat.`)
+        assert.notEqual(msg.message, `${testName2}_2 joined the chat.`)
+        done();
+      });
+    }, 50);
+  });
+
+  it('Should receive message from other user', (done: Function) => {
+    const testMsg = 'Hello there!'
+
+    socket1.emit('joinRoom', { username: testName1 });
+    socket2.emit('joinRoom', { username: testName2 });
+    // Wait for ioServer to finish emit/broadcast.
+    setTimeout(() => {
+      // Now emit a test message from user.
+      socket1.emit('message', testMsg);
+      socket2.once('message', (msg: TMessage) => {
+        assert.equal(msg.message, testMsg);
+        done();
+      });
+    }, 50);
+  });
 });
