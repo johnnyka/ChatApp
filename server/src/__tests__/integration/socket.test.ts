@@ -14,6 +14,7 @@ let ioServer: socketio.Server;
 let socket1: SocketIOClient.Socket;
 let socket2: SocketIOClient.Socket;
 
+const botName: string = 'ChatBot';
 const testName1: string = 'JohnDoe';
 const testName2: string = 'SaraSmith';
 
@@ -40,7 +41,8 @@ afterAll((done: Function) => {
   done();
 });
 
-describe('Socket configuration...', () => {
+describe('Simple test', () => {
+
   it('Should communicate', (done: Function) => {
     ioServer.emit('hello', 'Hello Client!');
     socket1.once('hello', (message: string) => {
@@ -48,60 +50,111 @@ describe('Socket configuration...', () => {
       done();
     });
   });
+});
 
-  describe('One client socket...', () => {
+describe('joinRoom event', () => {
 
-    beforeEach((done: Function) => {
-      socket1.emit('joinRoom', { username: testName1 });
+  it('Should emit welcome message to the new user', (done: Function) => {
+    const time = (new Date()).toLocaleTimeString().slice(0, 5);
+
+    socket1.emit('joinRoom', { username: testName1 });
+    socket1.once('message', (msg: TMessage) => {
+      assert.equal(msg.author, botName);
+      assert.equal(msg.time, time);
+      assert.match(msg.message, new RegExp('welcome', 'i'));
+      assert.match(msg.message, new RegExp(testName1));
       done();
     });
+  });
 
-    it('Should give welcome response upon joinRoom event', (done: Function) => {
-      const author: string = 'ChatBot';
-      const time: string = (new Date()).toLocaleTimeString().slice(0, 5);
+  it('Should emit user list', (done: Function) => {
+    socket1.once('chatInfo', ({ users }: { users: string[] }) => {
+      assert.isArray(users);
+      assert.lengthOf(users, 1);
+      assert.sameMembers(users, [testName1]);
+      done();
+    });
+  });
 
-      socket1.once('message', (msg: TMessage) => {
-        assert.equal(msg.author, author);
-        assert.equal(msg.time, time);
-        assert.match(msg.message, new RegExp(testName1));
-        assert.notMatch(msg.message, new RegExp(`${testName1}_2`));
+});
+
+describe('Additional joinRoom event', () => {
+
+  it('Should broadcast new user joined chat and emit updated user list', (done: Function) => {
+    const time = (new Date()).toLocaleTimeString().slice(0, 5);
+
+    socket2.emit('joinRoom', { username: testName2 });
+    socket1.once('message', (msg: TMessage) => {
+      assert.equal(msg.author, botName);
+      assert.equal(msg.time, time);
+      assert.match(msg.message, new RegExp('joined the chat'));
+      assert.match(msg.message, new RegExp(testName2));
+
+      socket1.once('chatInfo', ({ users }: { users: string[] }) => {
+        assert.isArray(users);
+        assert.lengthOf(users, 2);
+        assert.sameMembers(users, [testName1, testName2]);
         done();
       });
     });
   });
+});
 
-  describe('Two client sockets...', () => {
+describe('isTyping event', () => {
 
-    beforeEach((done: Function) => {
-      socket1.emit('joinRoom', { username: testName1 });
-      socket2.emit('joinRoom', { username: testName2 });
+  it('Should broadcast that user is typing', (done: Function) => {
+    socket1.emit('isTyping', true);
+    socket2.once('isTyping', ({ user, isTyping }: { user: string, isTyping: boolean }) => {
+      assert.equal(user, testName1);
+      assert.equal(isTyping, true);
       done();
     });
-
-    it('Should broadcast user joined chat', (done: Function) => {
-      // Wait for ioServer to finish joinRoom events.
-      setTimeout(() => {
-      // Now let the 2nd user join.
-      socket1.once('message', (msg: TMessage) => {
-        assert.equal(msg.message, `${testName2} joined the chat.`)
-        assert.notEqual(msg.message, `${testName2}_2 joined the chat.`)
-        done();
-      });
-      }, 50);
-    });
-
-    it('Should receive message from other user', (done: Function) => {
-      const testMsg = 'Hello there!'
-
-      setTimeout(() => {
-      socket1.emit('message', testMsg);
-      socket2.once('message', (msg: TMessage) => {
-        assert.equal(msg.message, testMsg);
-        done();
-      });
-      }, 50);
-    });
-
   });
 
+  it('Should broadcast that user is done typing', (done: Function) => {
+    socket1.emit('isTyping', false);
+    socket2.once('isTyping', ({ user, isTyping }: { user: string, isTyping: boolean }) => {
+      assert.equal(user, testName1);
+      assert.equal(isTyping, false);
+      done();
+    });
+  });
+
+});
+
+describe('message event', () => {
+  const mockMessage = 'Howdy';
+  const time = (new Date()).toLocaleTimeString().slice(0, 5);
+
+  it('Should emit message to all users', (done: Function) => {
+    socket1.emit('message', mockMessage);
+    socket2.once('message', (msg: TMessage) => {
+      assert.equal(msg.author, testName1);
+      assert.equal(msg.time, time);
+      assert.equal(msg.message, mockMessage);
+      done();
+    });
+  });
+
+});
+
+describe('disconnection event', () => {
+  const time = (new Date()).toLocaleTimeString().slice(0, 5);
+
+  it('Should broadcast that user has left the chat and emit updated user list', (done: Function) => {
+    socket1.disconnect();
+    socket2.once('message', (msg: TMessage) => {
+      assert.equal(msg.author, botName);
+      assert.equal(msg.time, time);
+      assert.match(msg.message, new RegExp('left the chat'));
+      assert.match(msg.message, new RegExp(testName1));
+
+      socket2.once('chatInfo', ({ users }: { users: string[] }) => {
+        assert.isArray(users);
+        assert.lengthOf(users, 1);
+        assert.sameMembers(users, [testName2]);
+        done();
+      });
+    });
+  });
 });
