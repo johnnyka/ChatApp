@@ -19,9 +19,9 @@ const socketServer = (server: http.Server): socketio.Server => {
     socket.on('joinRoom', ({ username }: { username: string }) => {
       name = username;
       logger(name, 'Joined chat.');
-
+      
       const allUsers = storeUser({ id: socket.id, username: name });
-
+      
       socket.join(room);
       socket.emit('message', messageObj(botName, `Welcome to ${room}, ${name}. Say 👋\u00A0 to your friends!`));
       socket.broadcast.to(room).emit('message', messageObj(botName, `${name} joined the chat.`));

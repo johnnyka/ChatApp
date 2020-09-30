@@ -42,7 +42,6 @@ afterAll((done: Function) => {
 
 describe('Socket configuration...', () => {
   it('Should communicate', (done: Function) => {
-
     ioServer.emit('hello', 'Hello Client!');
     socket1.once('hello', (message: string) => {
       assert.equal(message, 'Hello Client!');
@@ -50,47 +49,59 @@ describe('Socket configuration...', () => {
     });
   });
 
-  it('Should give welcome response upon joinRoom event', (done: Function) => {
-    const author: string = 'ChatBot';
-    const time: string = (new Date()).toLocaleTimeString().slice(0, 5);
+  describe('One client socket...', () => {
 
-    socket1.emit('joinRoom', { username: testName1 });
-    socket1.once('message', (msg: TMessage) => {
-      assert.equal(msg.author, author);
-      assert.equal(msg.time, time);
-      assert.match(msg.message, new RegExp(testName1));
-      assert.notMatch(msg.message, new RegExp(`${testName1}_2`));
+    beforeEach((done: Function) => {
+      socket1.emit('joinRoom', { username: testName1 });
       done();
+    });
+
+    it('Should give welcome response upon joinRoom event', (done: Function) => {
+      const author: string = 'ChatBot';
+      const time: string = (new Date()).toLocaleTimeString().slice(0, 5);
+
+      socket1.once('message', (msg: TMessage) => {
+        assert.equal(msg.author, author);
+        assert.equal(msg.time, time);
+        assert.match(msg.message, new RegExp(testName1));
+        assert.notMatch(msg.message, new RegExp(`${testName1}_2`));
+        done();
+      });
     });
   });
 
-  it('Should broadcast user joined chat', (done: Function) => {
-    socket1.emit('joinRoom', { username: testName1 });
-    // Wait for ioServer to finish emit/broadcast.
-    setTimeout(() => {
-      // Now let the 2nd user join.
+  describe('Two client sockets...', () => {
+
+    beforeEach((done: Function) => {
+      socket1.emit('joinRoom', { username: testName1 });
       socket2.emit('joinRoom', { username: testName2 });
+      done();
+    });
+
+    it('Should broadcast user joined chat', (done: Function) => {
+      // Wait for ioServer to finish joinRoom events.
+      setTimeout(() => {
+      // Now let the 2nd user join.
       socket1.once('message', (msg: TMessage) => {
         assert.equal(msg.message, `${testName2} joined the chat.`)
         assert.notEqual(msg.message, `${testName2}_2 joined the chat.`)
         done();
       });
-    }, 50);
-  });
+      }, 50);
+    });
 
-  it('Should receive message from other user', (done: Function) => {
-    const testMsg = 'Hello there!'
+    it('Should receive message from other user', (done: Function) => {
+      const testMsg = 'Hello there!'
 
-    socket1.emit('joinRoom', { username: testName1 });
-    socket2.emit('joinRoom', { username: testName2 });
-    // Wait for ioServer to finish emit/broadcast.
-    setTimeout(() => {
-      // Now emit a test message from user.
+      setTimeout(() => {
       socket1.emit('message', testMsg);
       socket2.once('message', (msg: TMessage) => {
         assert.equal(msg.message, testMsg);
         done();
       });
-    }, 50);
+      }, 50);
+    });
+
   });
+
 });
