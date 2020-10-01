@@ -19,12 +19,6 @@ const MessageBoard = (): JSX.Element => {
   const messageListRef: React.MutableRefObject<HTMLUListElement> = useRef(document.createElement("ul"));
   const msgBoardSectionRef: React.MutableRefObject<HTMLElement> = useRef(document.createElement("section"));
 
-  useEffect(() => {
-    dispatch(addHideMsgLabels(messages))
-    
-    activateAutoScroll();
-  }, [messages, dispatch]);
-
   // BUG: Lagging. One message will not be visible before scrolled to bottom.
   const activateAutoScroll = () => {
     const listHeight = messageListRef.current.scrollHeight;
@@ -33,9 +27,15 @@ const MessageBoard = (): JSX.Element => {
     if (listHeight > sectionHeight && scroll) {
       scroll = false;
       // Scroll large value to ensure scrolled to bottom.
-      msgBoardSectionRef.current.scrollTop = 1000; 
+      msgBoardSectionRef.current.scrollTop = 1000;
     }
   };
+
+  useEffect(() => {
+    dispatch(addHideMsgLabels(messages))
+
+    activateAutoScroll();
+  }, [messages, dispatch]);
 
   const handleMessage = (msg: IMsgWithHideLabels): JSX.Element => {
     const { author, time, message, authorLabel, timeLabel } = msg;

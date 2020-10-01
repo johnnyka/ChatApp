@@ -1,6 +1,6 @@
 import http from 'http';
 import socketio from 'socket.io';
-import { storeUser, getUser, removeUser } from '../utils/users';
+import { storeUser, removeUser } from '../utils/users';
 import messageObj from '../utils/messages';
 import { logger } from '../utils/logger';
 import inactivityTime from '../utils/constants';
@@ -19,9 +19,9 @@ const socketServer = (server: http.Server): socketio.Server => {
     socket.on('joinRoom', ({ username }: { username: string }) => {
       name = username;
       logger(name, 'Joined chat.');
-      
+
       const allUsers = storeUser({ id: socket.id, username: name });
-      
+
       socket.join(room);
       socket.emit('message', messageObj(botName, `Welcome to ${room}, ${name}. Say 👋\u00A0 to your friends!`));
       socket.broadcast.to(room).emit('message', messageObj(botName, `${name} joined the chat.`));
@@ -32,7 +32,6 @@ const socketServer = (server: http.Server): socketio.Server => {
 
     // When the user is typing a message...
     socket.on('isTyping', (bool: boolean) => {
-
       socket.broadcast.to(room).emit('isTyping', { user: name, isTyping: bool });
 
       clearTimeout(timer);

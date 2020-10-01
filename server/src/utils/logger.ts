@@ -24,4 +24,5 @@ export const logger = (username: string, message: string): void => {
 };
 
 // TODO:
-// BUG: Will log user 'left chat' (logout) when socket switches from polling to websocket after ~2 min
+// BUG: Will log user 'left chat' (logout) when socket switches from polling to
+// websocket after ~2 min.

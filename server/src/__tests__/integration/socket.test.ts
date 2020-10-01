@@ -14,25 +14,26 @@ let ioServer: socketio.Server;
 let socket1: SocketIOClient.Socket;
 let socket2: SocketIOClient.Socket;
 
-const botName: string = 'ChatBot';
-const testName1: string = 'JohnDoe';
-const testName2: string = 'SaraSmith';
+const botName = 'ChatBot';
+const testName1 = 'JohnDoe';
+const testName2 = 'SaraSmith';
 
-beforeAll((done: Function) => {
-  httpServer = http.createServer(app);      // Http server
-  ioServer = socketServer(httpServer);      // socket.io server
+beforeAll((done: jest.DoneCallback) => {
+  httpServer = http.createServer(app); // Http server
+  ioServer = socketServer(httpServer); // socket.io server
   httpServer.listen(PORT);
 
   socket1 = io(`http://localhost:${PORT}`); // Socket
   socket2 = io(`http://localhost:${PORT}`);
   socket1.on('connect', () => {
+    // ...
   });
   socket2.on('connect', () => {
-    done();                                 // Await socket to be connected.
+    done(); // Await socket to be connected.
   });
 });
 
-afterAll((done: Function) => {
+afterAll((done: jest.DoneCallback) => {
   // Cleanup
   ioServer.close();
   httpServer.close();
@@ -42,8 +43,7 @@ afterAll((done: Function) => {
 });
 
 describe('Simple test', () => {
-
-  it('Should communicate', (done: Function) => {
+  it('Should communicate', (done: jest.DoneCallback) => {
     ioServer.emit('hello', 'Hello Client!');
     socket1.once('hello', (message: string) => {
       assert.equal(message, 'Hello Client!');
@@ -53,8 +53,7 @@ describe('Simple test', () => {
 });
 
 describe('joinRoom event', () => {
-
-  it('Should emit welcome message to the new user', (done: Function) => {
+  it('Should emit welcome message to the new user', (done: jest.DoneCallback) => {
     const time = (new Date()).toLocaleTimeString().slice(0, 5);
 
     socket1.emit('joinRoom', { username: testName1 });
@@ -67,7 +66,7 @@ describe('joinRoom event', () => {
     });
   });
 
-  it('Should emit user list', (done: Function) => {
+  it('Should emit user list', (done: jest.DoneCallback) => {
     socket1.once('chatInfo', ({ users }: { users: string[] }) => {
       assert.isArray(users);
       assert.lengthOf(users, 1);
@@ -75,12 +74,10 @@ describe('joinRoom event', () => {
       done();
     });
   });
-
 });
 
 describe('Additional joinRoom event', () => {
-
-  it('Should broadcast new user joined chat and emit updated user list', (done: Function) => {
+  it('Should broadcast new user joined chat and emit updated user list', (done: jest.DoneCallback) => {
     const time = (new Date()).toLocaleTimeString().slice(0, 5);
 
     socket2.emit('joinRoom', { username: testName2 });
@@ -101,8 +98,7 @@ describe('Additional joinRoom event', () => {
 });
 
 describe('isTyping event', () => {
-
-  it('Should broadcast that user is typing', (done: Function) => {
+  it('Should broadcast that user is typing', (done: jest.DoneCallback) => {
     socket1.emit('isTyping', true);
     socket2.once('isTyping', ({ user, isTyping }: { user: string, isTyping: boolean }) => {
       assert.equal(user, testName1);
@@ -111,7 +107,7 @@ describe('isTyping event', () => {
     });
   });
 
-  it('Should broadcast that user is done typing', (done: Function) => {
+  it('Should broadcast that user is done typing', (done: jest.DoneCallback) => {
     socket1.emit('isTyping', false);
     socket2.once('isTyping', ({ user, isTyping }: { user: string, isTyping: boolean }) => {
       assert.equal(user, testName1);
@@ -119,14 +115,13 @@ describe('isTyping event', () => {
       done();
     });
   });
-
 });
 
 describe('message event', () => {
   const mockMessage = 'Howdy';
   const time = (new Date()).toLocaleTimeString().slice(0, 5);
 
-  it('Should emit message to all users', (done: Function) => {
+  it('Should emit message to all users', (done: jest.DoneCallback) => {
     socket1.emit('message', mockMessage);
     socket2.once('message', (msg: TMessage) => {
       assert.equal(msg.author, testName1);
@@ -135,13 +130,12 @@ describe('message event', () => {
       done();
     });
   });
-
 });
 
 describe('disconnection event', () => {
   const time = (new Date()).toLocaleTimeString().slice(0, 5);
 
-  it('Should broadcast that user has left the chat and emit updated user list', (done: Function) => {
+  it('Should broadcast that user has left the chat and emit updated user list', (done: jest.DoneCallback) => {
     socket1.disconnect();
     socket2.once('message', (msg: TMessage) => {
       assert.equal(msg.author, botName);
