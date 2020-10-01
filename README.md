@@ -25,7 +25,10 @@ The instrucitons were to build a chat application where multiple users can login
 Make sure you have installed the technologies above on you machine.
 
 ## Usage
-To run the application, follow the steps below.
+Try it out for yourself, [link](https://chat-app-johnnykan.herokuapp.com/).
+
+
+Or if you'd rather run it locally on your machine, follow the steps below.
 Run the backend server:
 ```
 cd server
@@ -39,7 +42,7 @@ npm install
 npm run start
 ```
 
-The rest should be quite self explanatory. Below are some images for inspiration. Enjoy 😄
+Go to [http://localhost:3000](http://localhost:3000). The rest should be quite self explanatory. Below are some images to give you a hint. Enjoy 😄
 
 ![LandingPage.png](/Pics/LandingPage.png) ![LandingPage_server_unavailable.png](/Pics/LandingPage_server_unavailable.png)
 ![ChatPage_1.png](/Pics/ChatPage_1.png) ![ChatPage_2.png](/Pics/ChatPage_2.png) ![ChatInfoPage.png](/Pics/ChatInfoPage.png)
