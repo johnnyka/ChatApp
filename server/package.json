@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .ts --fix",
-    "test": "jest",
+    "test": "jest --runInBand --detectOpenHandles",
     "poststart": "tsc && node dist/index.js",
     "start": "nodemon --ext .ts --exec \"npm run poststart\""
   },
@@ -20,6 +20,7 @@
     "@types/jest": "^26.0.14",
     "@types/socket.io": "^2.1.11",
     "@types/socket.io-client": "^1.4.33",
+    "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "chai": "^4.2.0",
@@ -29,6 +30,7 @@
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "socket.io-client": "^2.3.0",
+    "supertest": "^5.0.0",
     "ts-jest": "^26.4.1"
   },
   "dependencies": {
