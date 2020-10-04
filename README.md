@@ -20,6 +20,8 @@ The instrucitons were to build a chat application where multiple users can login
 <a href="https://reactrouter.com/" title="ReactRouter"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/react-router.svg" alt="ReactRouter" width="30px" height="30px"></img> React Router</a>  
 <a href="https://redux.js.org/" title="Redux"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/redux.svg" alt="Redux" width="30px" height="30px"></img> Redux</a>  
 <a href="https://www.typescriptlang.org/" title="TypeScript"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/typescript-icon.svg" alt="TypeScript" width="30px" height="30px"></img> TypeScript</a>
+<a href="https://jestjs.io/" title="Jest"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/jest.svg" alt="Jest" width="30px" height="30px"></img> Jest</a>
+<a href="https://www.chaijs.com/" title="Chai"><img src="https://github.com/tomchen/stack-icons/tree/master/logos" alt="Chai" width="30px" height="30px"></img> Chai</a>
 
 ## Installation
 Make sure you have installed the technologies above on you machine.
@@ -53,7 +55,7 @@ Go to [http://localhost:3000](http://localhost:3000). The rest should be quite s
 * Add unit tests, integration tests and e2e tests.
 * Migrate client socket to Redux middleware to avoid side effects etc.
 * Implement database for logging the chat messages/activities.
-* Add dark theme in client. Possible also other color themes.
+* Add dark theme in client. Possibly also other color themes.
 * Add user pics/avatars.
 * Add more chat rooms.
 * Add functionality to send images.
