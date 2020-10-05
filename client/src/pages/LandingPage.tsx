@@ -20,7 +20,17 @@ const LandingPage = (): JSX.Element => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    validateName(name, setIsValidName, setValidationMsg);
+    const response = validateName(name);
+    response
+      .then(res => res.json())
+      .then(res => {
+        setIsValidName(res.valid);
+        setValidationMsg(res.msg);
+      })
+      .catch(_err => {
+        setIsValidName(false);
+        setValidationMsg('Server is unavailable. Please try again later.');
+      });
   };
 
   useEffect(() => {
@@ -66,7 +76,7 @@ const LandingPage = (): JSX.Element => {
               value='Join chat'
             />
           </form>
-          <div className='name_form__feedback'>{validationMsg}</div>
+          <div className='name_form__feedback' aria-label='feedback'>{validationMsg}</div>
         </section>
       </div>
 

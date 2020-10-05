@@ -1,8 +1,4 @@
-export const validateName = (
-  name: string,
-  setIsValidName: React.Dispatch<React.SetStateAction<boolean>>,
-  setValidationMsg: React.Dispatch<React.SetStateAction<string>>
-): void => {
+export const validateName = (name: string): Promise<Response> => {
 
   const reqOptions = {
     method: 'POST',
@@ -12,14 +8,5 @@ export const validateName = (
     body: JSON.stringify({ name: name })
   };
 
-  fetch('/api/validation', reqOptions)
-    .then(res => res.json())
-    .then(res => {
-      setIsValidName(res.valid);
-      setValidationMsg(res.msg)
-    })
-    .catch(_err => {
-      setIsValidName(false);
-      setValidationMsg('Server is unavailable. Please try again later.')
-    });
+  return fetch('/api/validation', reqOptions);
 };
