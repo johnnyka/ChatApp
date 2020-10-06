@@ -20,7 +20,7 @@ const NavigationBar = (): JSX.Element => {
   return (
     <section className='navBar'>
       <button className='navBar__btns' type='button' onClick={() => leaveChat()}>
-        <i className="navBar__icons fas fa-chevron-left"></i>
+        <i className="navBar__icons icons__back fas fa-chevron-left"></i>
       </button>
       <p className='navBar__header'>Chat room</p>
       <button className='navBar__btns' type='button' onClick={() => openModal()}>

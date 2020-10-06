@@ -1,5 +1,6 @@
 .msgBoard {
   height: calc(100vh - 3.5rem - 4rem);
+  height: calc(var(--vh, 1vh) * 100 - 3.5rem - 4rem);
   padding: 0.8rem;
   overflow-y: auto;
 }
@@ -93,4 +94,92 @@ bottom of the list. Was not fully able to fix this in JS. */
 
 .hide {
   display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  /* Tablets */
+  .msgBoard {
+    height: calc(100vh - 5rem - 5rem);
+    height: calc(var(--vh, 1vh) * 100 - 5rem - 5rem);
+  }
+
+  .botMsg {
+    font-size: 0.8rem;
+  }
+
+  .receivedMsg .labels__author {
+    font-size: 1rem;
+  }
+
+  .labels__time {
+    font-size: 0.9rem;
+  }
+
+  .userMsg .msgItem__msg {
+    width: 60vw;
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Tablet - Large */
+  .msgBoard {
+    height: calc(100vh - 7rem - 6rem);
+    height: calc(var(--vh, 1vh) * 100 - 7rem - 6rem);
+  }
+
+  .botMsg {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .userMsg + .botMsg {
+    margin-top: 1rem;
+  }
+
+  .receivedMsg .labels__author {
+    font-size: 1.5rem;
+  }
+
+  .labels__time {
+    font-size: 1.3rem;
+  }
+
+  .userMsg .msgItem__msg {
+    width: 60vw;
+    font-size: 1.5rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* Desktop */
+  .msgBoard {
+    height: calc(100vh - 4rem - 4rem);
+    height: calc(var(--vh, 1vh) * 100 - 4rem - 4rem);
+  }
+  
+  .botMsg {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  
+  .userMsg + .botMsg {
+    margin-top: 1rem;
+  }
+  
+  .receivedMsg .labels__author {
+    font-size: 1rem;
+  }
+  
+  .labels__time {
+    font-size: 0.9rem;
+  }
+  
+  .userMsg .msgItem__msg {
+    width: 40vw;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+  }  
 }

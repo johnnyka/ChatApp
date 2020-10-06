@@ -6,7 +6,7 @@ import { IMsgWithHideLabels } from '../utils/types';
 import { addHideMsgLabels } from '../redux/slices/msgsWithHideLabelsSlice';
 import '../styling/MessageBoard.css';
 
-let scroll = true;
+let scrolledToBottom = false;
 
 const MessageBoard = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -24,8 +24,8 @@ const MessageBoard = (): JSX.Element => {
     const listHeight = messageListRef.current.scrollHeight;
     const sectionHeight = msgBoardSectionRef.current.clientHeight;
 
-    if (listHeight > sectionHeight && scroll) {
-      scroll = false;
+    if (listHeight > sectionHeight && !scrolledToBottom) {
+      scrolledToBottom = true;
       // Scroll large value to ensure scrolled to bottom.
       msgBoardSectionRef.current.scrollTop = 1000;
     }

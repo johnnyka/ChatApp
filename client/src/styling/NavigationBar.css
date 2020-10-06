@@ -29,3 +29,77 @@
 .icons__info {
   padding-right: 1rem;
 }
+
+@media only screen and (min-width: 768px) {
+  /* Tablets */
+  .navBar {
+    height: 5rem;
+  }
+
+  .navBar__header {
+    font-size: 2rem;
+  }
+
+  .navBar__btns {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .navBar__icons {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Tablet - Large */
+  .navBar {
+    height: 7rem;
+  }
+
+  .navBar__header {
+    font-size: 3rem;
+  }
+
+  .navBar__btns {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .navBar__icons {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* Desktop */
+  .navBar {
+    height: 4rem;
+  }
+
+  .navBar__header {
+    font-size: 2rem;
+  }
+
+  .navBar__btns {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 30px;
+    margin: 0 1rem;
+  }
+
+  .navBar__btns:hover {
+    background-color: rgba(255, 255, 255, 0.356);
+  }
+
+  .navBar__icons {
+    font-size: 2.5rem;
+  }
+
+  .icons__back {
+    padding-right: 0.3rem;
+  }
+  
+  .icons__info {
+    padding-left: 0.125rem;
+  }
+}

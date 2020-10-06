@@ -7,6 +7,7 @@ import { NavigationBar, MessageBoard, MessageSubmitForm } from '../components';
 import { RootState } from '../redux/rootReducer';
 import { updateName } from '../redux/slices/nameSlice';
 import ChatInfoPage from './ChatInfoPage';
+import '../styling/ChatPage.css';
 
 const ChatPage = (): JSX.Element => {
   const dispatch = useDispatch();

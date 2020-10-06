@@ -188,6 +188,11 @@
     font-size: 1.2rem;
   }
 
+  .name_form__input:hover {
+    background-color: rgba(255, 255, 255, 0.849);
+    /* border: 2px solid blue; */
+  }
+
   .name_form__submit_btn {
     width: 170px;
     height: 60px;

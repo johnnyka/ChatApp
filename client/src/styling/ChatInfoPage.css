@@ -43,8 +43,6 @@
 }
 
 .chatInfo__userInfo {
-  /* background-color: grey; */
-  /* padding: 0 1rem; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -60,18 +58,14 @@
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0.5rem 0;
-  /* background-color: rgb(67, 80, 255); */
   background-image: linear-gradient(90deg, rgb(10, 65, 247), rgb(99, 34, 252));
   width: 100%;
-  /* align-self: center; */
   text-align: center;
   color: white;
 }
 
 .userInfo__userList {
-  /* background-color: salmon; */
   width: 100%;
-  padding: 0.5rem 0;
   padding: 0.5rem 1rem;
 }
 
@@ -79,3 +73,101 @@
   padding: 0.1rem 0;
 }
 
+@media only screen and (min-width: 768px) {
+  /* Tablets */  
+  .chatInfo__modal {
+    width: 70vw;
+    height: 80vh;
+  }
+  
+  .modal__close_btn {
+    bottom: 15vh;
+  }
+  
+  .close_btn__icon {
+    font-size: 5rem;
+  }
+  
+  .header__info_icon {
+    font-size: 4rem;
+  }
+  
+  .userInfo__icon {
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+  
+  .userInfo__header {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1rem 0;
+  }
+  
+  .userInfo__userList {
+    width: 100%;
+    padding: 2rem 3rem;
+  }
+  
+  .usersList__userItem{
+    padding: 0.1rem 0;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Tablet - Large */
+  .chatInfo__modal {
+    width: 60vw;
+    height: 70vh;
+  }
+  
+  .modal__close_btn {
+    bottom: 20vh;
+  }
+
+  .usersList__userItem{
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* Desktop */
+  .chatInfo__modal {
+    width: 30vw;
+    height: 70vh;
+  }
+  
+  .close_btn__icon {
+    font-size: 3rem;
+  }
+
+  .close_btn__icon:hover {
+    color: rgb(179, 42, 42);
+  }
+  
+  .chatInfo__header {
+    margin: 1rem;
+  }
+  
+  .header__info_icon {
+    font-size: 3rem;
+  }
+  
+  .userInfo__icon {
+    margin-right: 0.8rem;
+  }
+  
+  .userInfo__header {
+    font-size: 1.7rem;
+    padding: 0.5rem 0;
+  }
+  
+  .userInfo__userList {
+    padding: 1rem 2rem;
+  }
+  
+  .usersList__userItem{
+    padding: 0.1rem 0;
+    font-size: 1.2rem;
+  }
+}
