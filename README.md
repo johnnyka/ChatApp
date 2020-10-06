@@ -51,8 +51,7 @@ Go to [http://localhost:3000](http://localhost:3000). The rest should be quite s
 ![LandingPage_disconnected_inactivity.png](/Pics/LandingPage_disconnected_inactivity.png)
 
 ## Future developments/improvements
-* Currently developed with mobile first. Need to add responsive styling for tablets and desktop.
-* Add unit tests, integration tests and e2e tests.
+* Add some more tests.
 * Migrate client socket to Redux middleware to avoid side effects etc.
 * Implement database for logging the chat messages/activities.
 * Add dark theme in client. Possibly also other color themes.
