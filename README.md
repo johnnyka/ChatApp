@@ -51,6 +51,7 @@ Go to [http://localhost:3000](http://localhost:3000). The rest should be quite s
 ![LandingPage_disconnected_inactivity.png](/Pics/LandingPage_disconnected_inactivity.png)
 
 ## Future developments/improvements
+* Consider React Native app for mobiles.
 * Add some more tests.
 * Migrate client socket to Redux middleware to avoid side effects etc.
 * Implement database for logging the chat messages/activities.
