@@ -2,9 +2,9 @@ import request from 'supertest';
 import express from 'express';
 import bodyParser from 'body-parser';
 import validation from '../../api/validation';
+import { usernames } from '../../utils/users';
 
 jest.mock('../../utils/users');
-import { usernames } from '../../utils/users';
 (usernames as jest.Mock).mockReturnValue([]); // Set dummy mock to default value.
 
 const app = express();
@@ -21,9 +21,9 @@ describe('POST /api/validation route', () => {
       .expect(200)
       .expect({
         valid: true,
-        msg: ''
+        msg: '',
       })
-      .end(done)
+      .end(done);
   });
 
   it('Should respond 400 for empty username', (done: jest.DoneCallback) => {
@@ -35,9 +35,9 @@ describe('POST /api/validation route', () => {
       .expect(400)
       .expect({
         valid: false,
-        msg: 'Empty string is not allowed. Please enter a valid name.'
+        msg: 'Empty string is not allowed. Please enter a valid name.',
       })
-      .end(done)
+      .end(done);
   });
 
   it('Should respond 400 on username with special character(s)', (done: jest.DoneCallback) => {
@@ -49,14 +49,14 @@ describe('POST /api/validation route', () => {
       .expect(400)
       .expect({
         valid: false,
-        msg: 'Special characters are not allowed. Please enter a valid name.'
+        msg: 'Special characters are not allowed. Please enter a valid name.',
       })
-      .end(done)
+      .end(done);
   });
 
   it('Should respond 400 on username that already exist', (done: jest.DoneCallback) => {
-    const alreadyExistingName: string = 'Barack_Obama';
-    
+    const alreadyExistingName = 'Barack_Obama';
+
     (usernames as jest.Mock).mockReturnValue([alreadyExistingName]); // Real mock!
 
     request(app)
@@ -67,8 +67,8 @@ describe('POST /api/validation route', () => {
       .expect(400)
       .expect({
         valid: false,
-        msg: 'The name is already taken. Try another one.'
+        msg: 'The name is already taken. Try another one.',
       })
-      .end(done)
+      .end(done);
   });
 });
