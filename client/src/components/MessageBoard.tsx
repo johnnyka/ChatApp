@@ -71,7 +71,7 @@ const MessageBoard = (): JSX.Element => {
     };
 
     return (
-      <ul className='msgBoard__msgList' ref={messageListRef}>
+      <ul className='msgBoard__msgList' ref={messageListRef} aria-label='message list'>
         {msgsWithHideLabels.map((message, i) => (
           <li key={i} className={`msgList__msgItem  
             ${identifyMsgType(message.author)}`}

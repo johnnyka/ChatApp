@@ -26,11 +26,9 @@ const ChatPage = (): JSX.Element => {
   const renderChat = (): JSX.Element => {
     return (
       <>
-        <section className='chatPage'>
-          <NavigationBar />
-          <MessageBoard />
-          <MessageSubmitForm />
-        </section>
+        <NavigationBar />
+        <MessageBoard />
+        <MessageSubmitForm />
 
         {infoModal ? <ChatInfoPage /> : null}
         {isDisconnected.bool ? <Redirect to='/' /> : null}
@@ -38,10 +36,10 @@ const ChatPage = (): JSX.Element => {
     )
   };
   return (
-    <>
+    <section className='chatPage' role='main' aria-label='chat page'>
       {/* TODO: Fix nicer loader. */}
-      {messages.length ? renderChat() : <div>Loading...</div>} 
-    </>
+      {messages.length ? renderChat() : <div>Loading...</div>}
+    </section>
   );
 };
 

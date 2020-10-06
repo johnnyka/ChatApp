@@ -50,9 +50,10 @@ const MessageSubmitForm = (): JSX.Element => {
           placeholder='Message'
           onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(e) }}
           autoCapitalize='on' // Only for virtual keyboards (mobile).
+          aria-label='message input'
         >
         </textarea>
-        <button className='msgSubmitForm__send_btn' type='submit'>
+        <button className='msgSubmitForm__send_btn' type='submit' aria-label='send message'>
           <i className="msgSubmitForm__send_icon fas fa-paper-plane"></i>
         </button>
       </form>
