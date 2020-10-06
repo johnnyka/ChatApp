@@ -3,9 +3,9 @@
 }
 
 .landing {
-  /* background-color: red; */
   width: 90vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -27,15 +27,11 @@
 }
 
 .landing__icon {
-  /* background-color: royalblue; */
-  /* position: absolute;
-  top: 20%; */
   font-size: 6rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .landing__header {
-  /* background-color: mediumpurple; */
   position: absolute;
   top: 42%;
   font-size: 1.5rem;
@@ -44,18 +40,14 @@
 }
 
 /* .landing__info {
-  background-color: rgb(59, 59, 99);
-  position: absolute;
-  top: 45%;
 } */
 
 .landing__name_form {
-  /* background-color: lightblue; */
   width: 70vw;
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 25%;
+  top: 55%;
 }
 
 .name_form__input {
@@ -71,22 +63,145 @@
   padding: 0.5rem;
   margin: 0.5rem 0;
   border-radius: 20px;
-  border: 1px solid rgb(0, 4, 218);
-  background-color: rgb(0, 4, 218);
+  border: 1px solid rgb(0, 2, 150);
+  background-color: rgb(0, 2, 150);
   color: white;
   font-size: 1rem;
   font-weight: bold;
   outline: none;
 }
 
-.name_form__submit_btn :hover {
-  background-color: rgb(74, 76, 214);
-}
-
 .name_form__feedback {
   width: 70vw;
   position: absolute;
-  bottom: 18%;
+  top: 80%;
   font-size: 0.8rem;
   color: white;
+}
+
+@media only screen and (max-height: 667px) {
+  /* Mobile - Considering address bar and bottom navigation */
+  .landing__header {
+    top: 45%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* Tablets */
+  .landing__icon_container {
+    top: 15%;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 150px;
+  }
+
+  .landing__icon {
+    font-size: 8.5rem;
+  }
+
+  .landing__header {
+    top: 45%;
+    font-size: 2.5rem;
+  }
+
+  .landing__name_form {
+    width: 50vw;
+    top: 65%;
+  }
+
+  .name_form__input {
+    font-size: 1.2rem;
+  }
+
+  .name_form__submit_btn {
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    align-self: center;
+  }
+
+  .name_form__feedback {
+    width: 50vw;
+    top: 80%;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Tablet - Large */
+  .landing__icon_container {
+    top: 15%;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 180px;
+  }
+
+  .landing__icon {
+    font-size: 11.5rem;
+  }
+
+  .landing__header {
+    font-size: 3.5rem;
+  }
+
+  .name_form__input {
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .name_form__submit_btn {
+    width: 200px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+
+  .name_form__feedback {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  /* Desktop */
+  .landing__icon_container {
+    top: 10%;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 150px;
+  }
+
+  .landing__icon {
+    font-size: 9rem;
+  }
+
+  .landing__header {
+    font-size: 3rem;
+  }
+
+  .landing__name_form {
+    width: 35vw;
+    top: 60%;
+  }
+
+  .name_form__input {
+    padding: 0.6rem;
+    font-size: 1.2rem;
+  }
+
+  .name_form__submit_btn {
+    width: 170px;
+    height: 60px;
+    font-size: 1.3rem;
+  }
+
+  .name_form__submit_btn:hover {
+  border: 1px solid rgb(0, 47, 201);
+  background-color: rgb(0, 47, 201);
+  }
+
+  .name_form__feedback {
+    width: 35vw;
+    font-size: 1.2rem;
+    top: 83%;
+  }
 }

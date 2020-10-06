@@ -11,6 +11,9 @@ import LandingPage from './pages/LandingPage';
 import ChatPage from './pages/ChatPage';
 import ChatInfoPage from './pages/ChatInfoPage';
 
+const vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 const App = (): JSX.Element => {
   return (
     <Provider store={store}>

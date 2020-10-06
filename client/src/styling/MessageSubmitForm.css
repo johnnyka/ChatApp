@@ -24,6 +24,7 @@
   outline: none;
   border-radius: 10px;
   border: none;
+  resize: none;
 }
 
 .msgSubmitForm__send_btn {
