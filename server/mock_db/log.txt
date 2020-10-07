@@ -1,0 +1,8 @@
+10/7/2020, 15:19:14 | JohnDoe | Joined chat.
+10/7/2020, 15:19:18 | JohnDoe | Hello
+10/7/2020, 15:19:21 | JohnDoe | Left chat.
+10/7/2020, 15:20:07 | JohnDoe | Joined chat.
+10/7/2020, 15:20:07 | SaraSmith | Joined chat.
+10/7/2020, 15:20:07 | JohnDoe | Howdy
+10/7/2020, 15:20:07 | JohnDoe | Left chat.
+10/7/2020, 15:20:07 | SaraSmith | Left chat.

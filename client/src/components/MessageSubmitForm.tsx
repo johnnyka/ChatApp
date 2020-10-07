@@ -17,7 +17,6 @@ const MessageSubmitForm = (): JSX.Element => {
     React.FormEvent<HTMLFormElement> |
     React.KeyboardEvent<HTMLTextAreaElement>): void => {
     event.preventDefault();
-
     if (myMsg) {
       dispatch(sendMessage(myMsg));
       setMyMsg('');
@@ -57,7 +56,7 @@ const MessageSubmitForm = (): JSX.Element => {
           <i className="msgSubmitForm__send_icon fas fa-paper-plane"></i>
         </button>
       </form>
-      <div className='msgSubmitSection__status'>
+      <div className='msgSubmitSection__status' role='alert' aria-label='status typing users'>
         {!!isTypingUsers.length ? renderIsTypingUser() : null}
       </div>
     </section>

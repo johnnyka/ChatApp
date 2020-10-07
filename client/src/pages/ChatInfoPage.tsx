@@ -16,12 +16,12 @@ const ChatInfoPage = (): JSX.Element => {
 
   const renderUsers = (): JSX.Element => {
     return (
-      <section className='chatInfo__userInfo'>
+      <section className='chatInfo__userInfo' role='dialog' aria-label='chat info page'>
         <h2 className='userInfo__header'>
           <i className='userInfo__icon fas fa-user-friends'></i>
           Users
         </h2>
-        <ul className='userInfo__userList'>
+        <ul className='userInfo__userList' aria-label='users list'>
           {users.map((user, i) => (
             <li key={i} className='usersList__userItem'>
               {user}
@@ -39,8 +39,11 @@ const ChatInfoPage = (): JSX.Element => {
           <i className='header__info_icon fas fa-info-circle'></i>
         </h1>
         {renderUsers()}
-        <button type='button' className='modal__close_btn'
+        <button
+          type='button'
+          className='modal__close_btn'
           onClick={() => closeModal()}
+          aria-label='close modal button'
         >
           <i className='close_btn__icon fas fa-times-circle'></i>
         </button>

@@ -13,7 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 jest.mock('../utils/validation');
 import { validateName } from '../utils/validation';
 
-describe.skip('Landing page', () => {
+describe('Landing page', () => {
   beforeEach(() => {
     (validateName as jest.Mock).mockClear();
   });

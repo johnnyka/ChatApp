@@ -19,11 +19,21 @@ const NavigationBar = (): JSX.Element => {
 
   return (
     <section className='navBar'>
-      <button className='navBar__btns' type='button' onClick={() => leaveChat()}>
+      <button 
+        className='navBar__btns'
+        type='button'
+        onClick={() => leaveChat()}
+        aria-label='leave chat button'
+      >
         <i className="navBar__icons icons__back fas fa-chevron-left"></i>
       </button>
       <p className='navBar__header'>Chat room</p>
-      <button className='navBar__btns' type='button' onClick={() => openModal()}>
+      <button
+        className='navBar__btns'
+        type='button'
+        onClick={() => openModal()}
+        aria-label='info button'
+      >
         <i className="navBar__icons icons__info fas fa-info-circle"></i>
       </button>
     </section>

@@ -53,7 +53,7 @@ const LandingPage = (): JSX.Element => {
   return (
     <>
       <div className='container'>
-        <section className='landing'>
+        <section className='landing' role='main' aria-label='landing page'>
           <div className='landing__icon_container'>
             <i className="landing__icon far fa-comments"></i>
           </div>
