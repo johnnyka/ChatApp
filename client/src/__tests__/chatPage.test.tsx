@@ -143,14 +143,14 @@ describe('Chat page', () => {
   it('Should leave chatPage upon clicking the back button', () => {
     const fakeStore = mockStore(initialStates);
     const { rerender } = render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
-    expect(screen.getByRole('main', { name: 'chat page'})).toBeDefined();
+    expect(screen.getByRole('main', { name: 'chat page'})).toBeInTheDocument();
 
     // Simulate click on back button.
     userEvent.click(screen.getByRole('button', { name: 'leave chat button' }));
     rerender(<Provider store={fakeStore}><Router><App /></Router></Provider>);
 
     // Expect to arrive in the landingPage.
-    expect(screen.queryByRole('main', { name: 'chat page'})).toBeNull();
-    expect(screen.getByRole('main', { name: 'landing page' })).toBeDefined();
+    expect(screen.queryByRole('main', { name: 'chat page'})).not.toBeInTheDocument();
+    expect(screen.getByRole('main', { name: 'landing page' })).toBeInTheDocument();
   });
 });

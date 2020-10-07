@@ -35,7 +35,7 @@ describe('Chat info page/modal', () => {
     rerender(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
 
     // Expect info modal to display.
-    expect(screen.getByRole('dialog', { name: 'chat info page' })).toBeDefined();
+    expect(screen.getByRole('dialog', { name: 'chat info page' })).toBeInTheDocument();
 
     // Simulate click on close button.
     userEvent.click(screen.getByRole('button', { name: 'close modal button' }));
@@ -48,7 +48,7 @@ describe('Chat info page/modal', () => {
     rerender(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
 
     // Expect the modal to be closed.
-    expect(screen.queryByRole('dialog', { name: 'chat info page' })).toBeNull();
+    expect(screen.queryByRole('dialog', { name: 'chat info page' })).not.toBeInTheDocument();
   });
 
   it('Should display all users in the chat', () => {
