@@ -21,7 +21,12 @@ const mockStore = configureMockStore();
 describe('Chat info page/modal', () => {
   it('Should open and close the info modal', () => {
     let fakeStore = mockStore(initialStates);
-    const { rerender } = render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    const { rerender } = render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>);
 
     // Simulate click on info button.
     userEvent.click(screen.getByRole('button', { name: 'info button' }));
@@ -45,7 +50,12 @@ describe('Chat info page/modal', () => {
       ...initialStates,
       infoModalVisibility: false,
     });
-    rerender(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    rerender(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>);
 
     // Expect the modal to be closed.
     expect(screen.queryByRole('dialog', { name: 'chat info page' })).not.toBeInTheDocument();
@@ -59,8 +69,15 @@ describe('Chat info page/modal', () => {
       users: [myName, user1, user2]
     });
 
-    render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
-    const usersListItems = screen.getByRole('list', { name: 'users list' }).getElementsByTagName('li');
+    render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>);
+    const usersListItems = screen
+      .getByRole('list', { name: 'users list' })
+      .getElementsByTagName('li');
     expect(usersListItems).toHaveLength(3);
     expect(usersListItems[0].textContent).toMatch(myName);
     expect(usersListItems[1].textContent).toMatch(user1);

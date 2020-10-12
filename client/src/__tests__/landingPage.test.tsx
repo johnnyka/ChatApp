@@ -29,28 +29,29 @@ describe('Landing page', () => {
       })
     })
 
-    expect(screen.getByRole('generic', {name: /feedback/}).textContent).toBe('');
+    expect(screen.getByRole('generic', { name: /feedback/ }).textContent).toBe('');
     userEvent.click(screen.getByRole('button', { name: /join chat/i }));
     await waitFor(() => expect(validateName).toHaveBeenCalled());
-    expect(screen.getByRole('generic', {name: /feedback/}).textContent).toBe(message);
+    expect(screen.getByRole('generic', { name: /feedback/ }).textContent).toBe(message);
     done();
   });
 
-  it('Should show correct validation message on rejected fetch to API', async (done: jest.DoneCallback) => {
-    render(<Provider store={store}><Router><LandingPage /></Router></Provider>);
+  it('Should show correct validation message on rejected fetch to API',
+    async (done: jest.DoneCallback) => {
+      render(<Provider store={store}><Router><LandingPage /></Router></Provider>);
 
-    const message = 'Server is unavailable. Please try again later.';
-    (validateName as jest.Mock).mockRejectedValue({
-      json: () => Promise.resolve({
-        valid: false,
-        msg: message
+      const message = 'Server is unavailable. Please try again later.';
+      (validateName as jest.Mock).mockRejectedValue({
+        json: () => Promise.resolve({
+          valid: false,
+          msg: message
+        })
       })
-    })
 
-    expect(screen.getByRole('generic', {name: /feedback/}).textContent).toBe('');
-    userEvent.click(screen.getByRole('button', { name: /join chat/i }));
-    await waitFor(() => expect(validateName).toHaveBeenCalled());
-    expect(screen.getByRole('generic', {name: /feedback/}).textContent).toBe(message);
-    done();
-  });
+      expect(screen.getByRole('generic', { name: /feedback/ }).textContent).toBe('');
+      userEvent.click(screen.getByRole('button', { name: /join chat/i }));
+      await waitFor(() => expect(validateName).toHaveBeenCalled());
+      expect(screen.getByRole('generic', { name: /feedback/ }).textContent).toBe(message);
+      done();
+    });
 });

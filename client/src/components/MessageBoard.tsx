@@ -16,8 +16,10 @@ const MessageBoard = (): JSX.Element => {
   const name = useSelector((state: RootState) => state.name);
   const messages = useSelector((state: RootState) => state.messages);
   const msgsWithHideLabels = useSelector((state: RootState) => state.msgsWithHideLabels);
-  const messageListRef: React.MutableRefObject<HTMLUListElement> = useRef(document.createElement("ul"));
-  const msgBoardSectionRef: React.MutableRefObject<HTMLElement> = useRef(document.createElement("section"));
+  const messageListRef: React.MutableRefObject<HTMLUListElement> = 
+    useRef(document.createElement("ul"));
+  const msgBoardSectionRef: React.MutableRefObject<HTMLElement> = 
+    useRef(document.createElement("section"));
 
   // BUG: Lagging. One message will not be visible before scrolled to bottom.
   const activateAutoScroll = () => {

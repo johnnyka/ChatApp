@@ -34,7 +34,9 @@ const LandingPage = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (isDisconnected.bool) setValidationMsg(`You were disconnected due to ${isDisconnected.reason}.`)
+    if (isDisconnected.bool) {
+      setValidationMsg(`You were disconnected due to ${isDisconnected.reason}.`)
+    }
   }, [isDisconnected]);
 
   useEffect(() => {
@@ -57,10 +59,11 @@ const LandingPage = (): JSX.Element => {
           <div className='landing__icon_container'>
             <i className="landing__icon far fa-comments"></i>
           </div>
-          <div className='landing__header'>Welcome to myChat</div>
+          <div id='landingHeader' className='landing__header'>Welcome to myChat</div>
 
           <form className='landing__name_form' onSubmit={(e) => handleSubmit(e)}>
             <input
+              id='nameInput'
               className='name_form__input'
               type='text'
               name='name'
@@ -71,16 +74,25 @@ const LandingPage = (): JSX.Element => {
               autoComplete='off'
             />
             <input
+              id='joinChatBtn'
               className='name_form__submit_btn'
               type='submit'
               value='Join chat'
             />
           </form>
-          <div className='name_form__feedback' aria-label='feedback'>{validationMsg}</div>
+          <div 
+            id='inputFeedback'
+            className='name_form__feedback'
+            aria-label='feedback'
+          >
+            {validationMsg}
+          </div>
         </section>
       </div>
 
-      {isDisconnected.bool ? console.log(`You were disconnected due to ${isDisconnected.reason}.`) : null}
+      {isDisconnected.bool 
+        ? console.log(`You were disconnected due to ${isDisconnected.reason}.`) 
+        : null}
       {redirect ? <Redirect push to='/chatroom' /> : null}
     </>
   );
