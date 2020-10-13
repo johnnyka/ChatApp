@@ -21,7 +21,7 @@ const ChatInfoPage = (): JSX.Element => {
           <i className='userInfo__icon fas fa-user-friends'></i>
           Users
         </h2>
-        <ul className='userInfo__userList' aria-label='users list'>
+        <ul id='usersList' className='userInfo__userList' aria-label='users list'>
           {users.map((user, i) => (
             <li key={i} className='usersList__userItem'>
               {user}
@@ -40,6 +40,7 @@ const ChatInfoPage = (): JSX.Element => {
         </h1>
         {renderUsers()}
         <button
+          id='closeInfoModalBtn'
           type='button'
           className='modal__close_btn'
           onClick={() => closeModal()}

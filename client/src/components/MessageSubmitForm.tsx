@@ -41,6 +41,7 @@ const MessageSubmitForm = (): JSX.Element => {
     <section className='msgSubmitSection'>
       <form className='msgSubmitSection__msgSubmitForm' onSubmit={(e) => handleSubmit(e)}>
         <textarea
+          id='messageInput'
           className='msgSubmitForm__input'
           name='myMsg'
           value={myMsg}
@@ -52,11 +53,21 @@ const MessageSubmitForm = (): JSX.Element => {
           aria-label='message input'
         >
         </textarea>
-        <button className='msgSubmitForm__send_btn' type='submit' aria-label='send message'>
+        <button
+          id='sendMessageBtn'
+          className='msgSubmitForm__send_btn'
+          type='submit'
+          aria-label='send message'
+        >
           <i className="msgSubmitForm__send_icon fas fa-paper-plane"></i>
         </button>
       </form>
-      <div className='msgSubmitSection__status' role='alert' aria-label='status typing users'>
+      <div
+        id='typingUsersNotification'
+        className='msgSubmitSection__status'
+        role='alert'
+        aria-label='status typing users'
+      >
         {!!isTypingUsers.length ? renderIsTypingUser() : null}
       </div>
     </section>

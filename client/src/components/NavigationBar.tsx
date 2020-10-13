@@ -20,6 +20,7 @@ const NavigationBar = (): JSX.Element => {
   return (
     <section className='navBar'>
       <button 
+        id='leaveChatBtn'
         className='navBar__btns'
         type='button'
         onClick={() => leaveChat()}
@@ -29,6 +30,7 @@ const NavigationBar = (): JSX.Element => {
       </button>
       <p className='navBar__header'>Chat room</p>
       <button
+        id='infoBtn'
         className='navBar__btns'
         type='button'
         onClick={() => openModal()}

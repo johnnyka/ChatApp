@@ -29,8 +29,9 @@
     "lint": "eslint . --ext .ts,tsx --fix",
     "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen --testPathIgnorePatterns=src/__tests__/functional",
+    "eject": "react-scripts eject",
+    "testui": "testcafe chrome src/__tests__/functional"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,6 +59,8 @@
     "@typescript-eslint/parser": "^4.2.0",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.20.6",
-    "jest-environment-jsdom-sixteen": "^1.0.3"
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "testcafe": "^1.9.4",
+    "testcafe-react-selectors": "^4.0.0"
   }
 }
