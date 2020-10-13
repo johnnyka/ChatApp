@@ -53,7 +53,6 @@ const socketServer = (server: http.Server): socketio.Server => {
 
     // When user disconnects...
     socket.on('disconnect', () => {
-      // console.log('NAME', name)
       logger(name, 'Left chat.');
       if (!isInactive) socket.broadcast.to(room).emit('message', messageObj(botName, `${name} left the chat.`));
       socket.broadcast.to(room).emit('isTyping', { user: name, isTyping: false });

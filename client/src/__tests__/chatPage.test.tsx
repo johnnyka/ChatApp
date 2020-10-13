@@ -8,7 +8,7 @@ import realStore from '../redux/store';
 import configureMockStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ChatPage from '../pages/ChatPage';
-import { 
+import {
   createMessageObj,
   author,
   time,
@@ -28,7 +28,13 @@ const mockStore = configureMockStore();
 
 describe('Chat page', () => {
   it('Should initially show loading', () => {
-    render(<Provider store={realStore}><Router><ChatPage /></Router></Provider>);
+    render(
+      <Provider store={realStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
 
     // expect(screen.getByRole('main', { name: 'chat page' }).textContent).toBe('Loading...');
     expect(screen.getByText(/loading.../i)).toBeInTheDocument();
@@ -36,7 +42,13 @@ describe('Chat page', () => {
 
   it('Should render chatPage and display chatBot message correctly', () => {
     const fakeStore = mockStore(initialStates);
-    render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
 
     const botMessage = screen.getByRole('list', { name: 'message list' });
     expect(screen.getByText(/Chat room/i)).toBeInTheDocument();
@@ -48,13 +60,20 @@ describe('Chat page', () => {
   it('Should empty textarea upon send/submit message and display my message correctly', () => {
     // Mock initial state in Redux store.
     let fakeStore = mockStore(initialStates);
-    const { rerender } = render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    const { rerender } = render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
 
     // Initially empty textarea.
     expect(screen.getByRole('textbox', { name: 'message input' }).textContent).toBe('');
 
     // ...and only message (from bot) in messageBoard.
-    let messageListItems = screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
+    let messageListItems = 
+      screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
     expect(messageListItems).toHaveLength(1);
 
     // Simulate message in textarea.
@@ -84,10 +103,17 @@ describe('Chat page', () => {
     });
 
     // Render new message.
-    rerender(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    rerender(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
 
     // Expect new message.
-    messageListItems = screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
+    messageListItems = 
+      screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
     const lastMessage = messageListItems[messageListItems.length - 1];
     expect(messageListItems).toHaveLength(2);
     expect(lastMessage.textContent).toMatch(myMessage);
@@ -115,9 +141,16 @@ describe('Chat page', () => {
       ]
     });
 
-    render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
+    render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
 
-    const messageListItems = screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
+    const messageListItems = 
+      screen.getByRole('list', { name: 'message list' }).getElementsByTagName('li');
     const lastMessage = messageListItems[messageListItems.length - 1];
     expect(messageListItems).toHaveLength(2);
     expect(lastMessage.textContent).toMatch(author);
@@ -132,25 +165,47 @@ describe('Chat page', () => {
       isTypingList: [user1, user2]
     })
 
-    render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
-    
-    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent).toMatch('typing...');
-    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent).toMatch(user1);
-    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent).toMatch(user2);
-    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent).not.toMatch(myName);
+    render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
+
+    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent)
+      .toMatch('typing...');
+    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent)
+      .toMatch(user1);
+    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent)
+      .toMatch(user2);
+    expect(screen.getByRole('alert', { name: 'status typing users' }).textContent)
+      .not.toMatch(myName);
   });
 
   it('Should leave chatPage upon clicking the back button', () => {
     const fakeStore = mockStore(initialStates);
-    const { rerender } = render(<Provider store={fakeStore}><Router><ChatPage /></Router></Provider>);
-    expect(screen.getByRole('main', { name: 'chat page'})).toBeInTheDocument();
+    const { rerender } = render(
+      <Provider store={fakeStore}>
+        <Router>
+          <ChatPage />
+        </Router>
+      </Provider>
+    );
+    expect(screen.getByRole('main', { name: 'chat page' })).toBeInTheDocument();
 
     // Simulate click on back button.
     userEvent.click(screen.getByRole('button', { name: 'leave chat button' }));
-    rerender(<Provider store={fakeStore}><Router><App /></Router></Provider>);
+    rerender(
+      <Provider store={fakeStore}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
 
     // Expect to arrive in the landingPage.
-    expect(screen.queryByRole('main', { name: 'chat page'})).not.toBeInTheDocument();
+    expect(screen.queryByRole('main', { name: 'chat page' })).not.toBeInTheDocument();
     expect(screen.getByRole('main', { name: 'landing page' })).toBeInTheDocument();
   });
 });
