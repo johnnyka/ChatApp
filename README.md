@@ -22,6 +22,7 @@ The instrucitons were to build a chat application where multiple users can login
 <a href="https://www.typescriptlang.org/" title="TypeScript"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/typescript-icon.svg" alt="TypeScript" width="30px" height="30px"></img> TypeScript</a>  
 <a href="https://jestjs.io/" title="Jest"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/jest.svg" alt="Jest" width="30px" height="30px"></img> Jest</a>  
 <a href="https://www.chaijs.com/" title="Chai"><img src="https://github.com/tomchen/stack-icons/blob/master/logos/chai.svg" alt="Chai" width="30px" height="30px"></img> Chai</a>  
+<a href="https://devexpress.github.io/testcafe/" title="TestCafé"><img src="https://github.com/johnnyka/TechStack-icons/blob/main/logos/testcafe.svg" alt="TestCafé" width="30px" height="30px"></img> TestCafé</a>  
 
 ## Installation
 Make sure you have installed the technologies above on you machine.
@@ -52,7 +53,6 @@ Go to [http://localhost:3000](http://localhost:3000). The rest should be quite s
 
 ## Future developments/improvements
 * Consider React Native app for mobiles.
-* Add some more tests.
 * Migrate client socket to Redux middleware to avoid side effects etc.
 * Implement database for logging the chat messages/activities.
 * Add dark theme in client. Possibly also other color themes.
